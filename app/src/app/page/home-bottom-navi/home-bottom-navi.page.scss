@@ -1,0 +1,89 @@
+.violet {
+  color: rgb(81, 0, 231);
+}
+.io {
+  width: 30px !important;
+  height: 30px !important;
+}
+
+.l {
+  font-size: 1.2rem;
+  font-weight: 600;
+  padding-bottom: 0.5rem;
+}
+
+.scan-btn{
+  border-radius: 14px;
+}
+
+.de {
+  color: gray;
+  /* margin: auto; */
+  /* width: 80%; */
+  text-align: center;
+}
+
+.see {
+  height: 20%;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  top: 15px;
+  column-gap: 10px;
+}
+
+.ee {
+  border: orange;
+  border-radius: orange 2px solid;
+  padding: 0.5rem;
+  border: 2px solid orange;
+  border-radius: 6px;
+  width: max-content;
+  line-height: 1;
+  height: 37px !important;
+  color: orange;
+  flex: 0 0 50%;
+}
+
+.logout-btn {
+  border: orange;
+  border-radius: orange 2px solid;
+  padding: 0.5rem;
+  border: 2px solid orange;
+  border-radius: 6px;
+  width: max-content;
+  line-height: 1;
+  height: 37px !important;
+  background: orange;
+  color: white;
+  flex: 0 0 50%;
+}
+
+// .ee:hover {
+//   color: white;
+//   background-color: orange;
+//   border: orange;
+//   border-radius: orange 2px solid;
+//   padding: 0.5rem;
+//   border: 2px solid orange;
+//   border-radius: 12px;
+//   width: 30%;
+// }
+
+.btn-primary {
+}
+
+.btn-default {
+  padding: 10px;
+  margin: 5px;
+}
+.box-shade{
+  filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.1));
+}
+
+.logo{
+  color: blue;
+}
+.cardcorner{
+  border-radius: 5px;
+}

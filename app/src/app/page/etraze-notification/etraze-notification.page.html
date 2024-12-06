@@ -1,0 +1,32 @@
+<ion-row class="background padding_st">
+  <ion-card class="back_bg">
+    <ion-icon class="icon_size" name="chevron-back-outline" (click)="backNav()"></ion-icon>
+  </ion-card>
+  <ion-text class="toolbar_text">Notifications</ion-text>
+</ion-row>
+<ion-content class="ion-padding">
+  <div class="mt-4 overflow-y-scroll">
+      <div class="flex  p-4 rounded-lg bg-white" >
+        <img src="assets/Notification-new.svg" alt="" class="mr-2 w-12 h-12 ">
+        <div class="ml-2">
+          <h4 class="text-base font-semibold font-system-ui text-blue-600">Your Medicine Order is Placed</h4>
+          <p class="text-gray-500 text-base">Your Order<span class="text-blue-600">#879826h</span>  has been placed</p>
+        </div>
+        <div class="ml-auto flex items-baseline text-sm">
+          <p>24mins</p>
+        </div>
+      </div>
+
+      <div class="flex  p-4 rounded-lg bg-white" >
+        <img src="assets/Notification-read.svg" alt="" class="mr-2 w-12 h-12 ">
+        <div class="ml-2">
+          <h4 class="text-base font-semibold font-system-ui text-grey">Your Medicine  is Delivered</h4>
+          <p class="text-gray-500 text-base">Your Order<span class="text-blue-600">#578932h</span>  has been delivered</p>
+        </div>
+        <div class="ml-auto flex items-baseline text-sm">
+          <p>54mins</p>
+        </div>
+      </div>
+     
+  </div>
+</ion-content>

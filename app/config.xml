@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="io.ionic.starter" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+
+  <platform name="android">
+    <splash density="land-hdpi" src="/src/resources/android/splash.png" />
+    <splash density="land-ldpi" src="src/assets/splash/android/drawable-land-ldpi-screen.png" />
+    <splash density="land-mdpi" src="src/assets/splash/android/drawable-land-mdpi-screen.png" />
+    <!-- Add other Android splash screen densities as needed -->
+    <!-- ... -->
+
+    <style name="AppTheme.NoActionBarLaunch" parent="AppTheme.NoActionBar">
+    <item name="android:background">@drawable/NAME</item>
+    </style>
+
+    <splash density="port-hdpi" src="src/assets/splash/android/drawable-port-hdpi-screen.png" />
+    <splash density="port-ldpi" src="src/assets/splash/android/drawable-port-ldpi-screen.png" />
+    <splash density="port-mdpi" src="src/assets/splash/android/drawable-port-mdpi-screen.png" />
+    <!-- Add other Android splash screen densities as needed -->
+    <!-- ... -->
+  </platform>
+  
+
+  <platform name="android">
+  <preference name="AndroidWindowSplashScreenAnimated" value="true" />
+  <preference name="AndroidWindowSplashScreenAnimatedIcon" value="@drawable/splashnew" />
+  <preference name="AndroidWindowSplashScreenBackground" value="#000000" />
+  <edit-config file="app/src/main/AndroidManifest.xml" mode="merge" target="/manifest/application" xmlns:android="http://schemas.android.com/apk/res/android">
+    <application android:networkSecurityConfig="@xml/network_security_config" />
+  </edit-config>
+</platform>
+
+
+  <!-- Splash Screen configurations for iOS -->
+  <platform name="ios">
+    <splash height="480" platform="ios" src="src/assets/splash/ios/Default~iphone.png" width="320" />
+    <splash height="960" platform="ios" src="src/assets/splash/ios/Default@2x~iphone.png" width="640" />
+    <!-- Add other iOS splash screen configurations as needed -->
+    <!-- ... -->
+  </platform>
+
+  <!-- Other configurations go here -->
+</widget>

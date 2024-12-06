@@ -1,0 +1,147 @@
+<!-- <ion-content>
+  <div class="flex-center">
+    <ion-button  class="button" (click)="stake()" >stake</ion-button>
+    <ion-button  class="button" (click)="user()" >user</ion-button>
+    <ion-button  class="button" (click)="owner()" >owner</ion-button> 
+    <ion-button  class="button" (click)="transporter()" >transporter</ion-button>    
+  </div>
+</ion-content> -->
+
+<!-- <ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/receiver" text="Back" icon="arrow-back" [disabled]="false"></ion-back-button>
+    </ion-buttons> 
+    <ion-title>checked</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <div class="flex-center" *ngIf="receivedstatus === 'ASSIGNED'">
+  <ion-button size="full"  color="success" type="submit" (click)="updateOrderStatus('CHECKED')" >CHECKED</ion-button>
+  </div> 
+
+  <div class="flex-center" *ngIf="receivedstatus === 'CHECKED'" >
+  <ion-button size="full"  color="success" type="submit" (click)="updateOrderStatus('PICKED')" >PICKED</ion-button>
+  </div>
+
+  <div class="flex-center" *ngIf="receivedstatus === 'PICKED'" >
+  <ion-button size="full"  color="success" type="submit" (click)="updateOrderStatus('PACKED')" >PACKED</ion-button>
+  </div>
+
+  <div class="flex-center"  *ngIf="receivedstatus === 'PACKED'" >
+  <ion-button size="full" type="submit" color="success" (click)="updateOrderStatus('DISPATCHED')" >DISPATCHED</ion-button>
+  </div>
+ 
+  <div class="flex-center" *ngIf="receivedstatus === 'DISPATCHED'" >
+  <ion-button size="full"  type="submit" color="success" (click)="updateOrderStatus('DELIVERED')" >DELIVERED</ion-button>  
+  </div>
+
+</ion-content> -->
+
+<ion-row  class="background tool_bar">
+  <ion-card class="back_bg" (click)="backNav()">
+    <ion-icon class="back_icon" name="chevron-back-outline"></ion-icon>
+  </ion-card>
+  <ion-text class="toolbar_text">Orders Details</ion-text>
+</ion-row>
+
+<ion-content class="content_st" >
+  <ion-card class="card_style" style="line-height: 34px;">
+    <ion-row size="12">
+      <ion-col size="6">
+        <ion-text class="toolbar_text order_default_font" >Ticket #</ion-text>
+      </ion-col>
+      <ion-col>
+        <ion-text class="light_font"><span class="span_style">:</span>{{this.ticketId}}</ion-text>
+      </ion-col>
+    </ion-row>
+
+    <ion-row size="12">
+      <ion-col size="6">
+        <ion-text class="toolbar_text order_default_font" >Category</ion-text>
+      </ion-col>
+      <ion-col>
+        <ion-text class="light_font"><span class="span_style">:</span>Order</ion-text>
+      </ion-col>
+    </ion-row>
+
+    <ion-row size="12">
+      <ion-col size="6">
+        <ion-text class="toolbar_text order_default_font">Assigned To</ion-text>
+      </ion-col>
+      <ion-col>
+        <ion-text class="light_font"><span class="span_style">:</span>Meshak</ion-text>
+      </ion-col>
+    </ion-row>
+
+    <ion-row size="12">
+      <ion-col size="6">
+        <ion-text class="toolbar_text order_default_font" >Customer Name</ion-text>
+      </ion-col>
+      <ion-col>
+        <ion-text class="light_font"><span class="span_style">:</span>Vallalar Agencies</ion-text>
+      </ion-col>
+    </ion-row>
+
+    <ion-row size="12">
+      <ion-col size="6">
+        <ion-text class="toolbar_text order_default_font" >Customer Location</ion-text>
+      </ion-col>
+      <ion-col>
+        <ion-text class="light_font"><span class="span_style">:</span>Cuddalore</ion-text>
+      </ion-col>
+    </ion-row>
+
+    <ion-row size="12">
+      <ion-col size="6">
+        <ion-text class="toolbar_text order_default_font" >Customer Red No</ion-text>
+      </ion-col>
+      <ion-col>
+        <ion-text class="light_font"><span class="span_style">:</span>MAIL - 1098</ion-text>
+      </ion-col>
+    </ion-row>
+
+    <ion-row size="12">
+      <ion-col size="6">
+        <ion-text class="toolbar_text order_default_font">Invocie #</ion-text>
+      </ion-col>
+      <ion-col>
+        <ion-text class="light_font"><span class="span_style">:</span>05233662772</ion-text>
+      </ion-col>
+    </ion-row>
+
+    <ion-row size="12">
+      <ion-col size="6">
+        <ion-text class="toolbar_text order_default_font" >No of Line Items</ion-text>
+      </ion-col>
+      <ion-col>
+        <ion-text class="light_font"><span class="span_style">:</span>4</ion-text>
+      </ion-col>
+    </ion-row>    
+  </ion-card>
+  <!-- <ion-button  class="view_bt_st" >Done</ion-button> -->
+  <div  *ngIf="receivedstatus === 'ASSIGNED'">
+    <ion-button  class="view_bt_st"  type="submit" (click)="updateOrderStatus('CHECKED')" >CHECKED</ion-button>
+    </div> 
+  
+    <div  *ngIf="receivedstatus === 'CHECKED'" >
+    <ion-button   class="view_bt_st" type="submit" (click)="updateOrderStatus('PICKED')" >PICKED</ion-button>
+    </div>
+  
+    <div  *ngIf="receivedstatus === 'PICKED'" >
+    <ion-button  class="view_bt_st"  type="submit" (click)="updateOrderStatus('PACKED')" >PACKED</ion-button>
+    </div>
+  
+    <div   *ngIf="receivedstatus === 'PACKED'" >
+    <ion-button  class="view_bt_st" type="submit" (click)="updateOrderStatus('DISPATCHED')" >DISPATCHED</ion-button>
+    </div>
+   
+    <div  *ngIf="receivedstatus === 'DISPATCHED'" >
+    <ion-button class="view_bt_st"  type="submit"  (click)="updateOrderStatus('DELIVERED')" >DELIVERED</ion-button>  
+    </div>
+
+    <ion-icon src="assets/success.svg"></ion-icon>
+    
+</ion-content>

@@ -1,0 +1,1005 @@
+
+
+<ion-row  class="background tool_bar">
+  <ion-card class="back_bg" (click)="backNav()">
+    <ion-icon class="back_icon" name="chevron-back-outline"></ion-icon>
+  </ion-card>
+  <ion-text class="toolbar_text">Return Details</ion-text>
+</ion-row>
+
+
+<ion-content class="content_st" >
+
+  <!-- Return Received -->
+<div *ngIf="returnStatus === 'created'"> 
+    
+  <ion-card class="card" style="line-height: 34px; border-radius: 20px;">
+   
+   
+ 
+    <!-- <ion-list [inset]="true">
+      <ion-item [button]="true" [detail]="false" id="select-fruits">
+        <ion-label>Favorite Fruits</ion-label>
+        <div slot="end" id="selected-fruits">{{ selectedFruits }}</div>
+      </ion-item>
+    </ion-list>  
+    
+    <ion-modal trigger="select-fruits" #modal>  
+      <ng-template>
+        <app-typeahead
+          class="ion-page"
+          title="Select Stockist"
+          [items]="stockists" 
+          (selectionChange)="fruitSelectionChanged($event,modal)"
+          (selectionCancel)="modal.dismiss()"
+        ></app-typeahead>        
+      </ng-template>      
+    </ion-modal> -->
+   
+   
+   
+   
+   
+    <form [formGroup]="Claims">  
+
+      <ion-grid  style="margin-bottom: -25px; ">
+        <ion-row size="12" style="margin-top: 10px;">
+          <ion-col size="6">
+            <ion-text class="toolbar_text_order_default_font">Claim No :</ion-text>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="12">
+            <input type="text" formControlName="claimNumber" class="input">
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      
+      
+      <p class="error-text mb-0 mt-1" style="color: red; margin-bottom: 8px; margin-top: 15px;margin-left: 7%;"
+        *ngIf="submitFlag && !Claims.get('claimNumber')?.value " >
+        This field is required
+      </p>     
+      
+      <ion-grid  style="margin-bottom: -25px;  margin-top: -30px;" >
+        <ion-row size="12" style="margin-top: 10px;">
+          <ion-col size="6">
+            <ion-text class="toolbar_text_order_default_font">Claim Date :</ion-text>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="12">
+            <input  type="date" formControlName="claimDate" class="input "   placeholder="dd-MM-yyyy" >             
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+      <!-- <ion-col size="12">            
+        <span style="position: absolute; z-index: 10;  left: 85%;top: 15px;">
+          <ion-icon name="calendar" slot="end"  (click)="openCalendar(claimDateInput)" style="color: black; height: 20px; width: 20px;"></ion-icon>
+        </span>
+        <input  type="date" placeholder="dd-MM-yyyy" formControlName="claimDate"  class="input"    #claimDateInput>            
+    </ion-col>   -->
+            
+      
+      <p class="error-text mb-0 mt-1" style="color: red; margin-bottom: 8px; margin-top: 15px;margin-left: 7%;"
+      *ngIf="submitFlag && !Claims.get('claimDate')?.value" >
+       This field is required
+      </p> 
+
+      <ion-grid style="margin-bottom: -25px; margin-top: -30px;">
+        <ion-row size="12" style="margin-top: 10px;" >
+          <ion-col size="6">
+            <ion-text class="toolbar_text_order_default_font">Stockist  : </ion-text>
+          </ion-col>
+        </ion-row>                 
+        <ion-row>
+          <ion-col size="12" style="display: flex; " >          
+           
+           <textarea formControlName="stockistId" readonly placeholder="Select Stockist" id="select-stockist" value="{{selectedFruits}}" class="col-12 input" style="text-align:center"></textarea>
+           <!-- <input class="input" style="display: flex; flex-direction: column; overflow: auto;" value="{{selectedFruits}}" formControlName="stockistId" placeholder="Select Stockist" id="select-stockist">  -->
+
+
+           <ion-modal trigger="select-stockist" #modal>  
+            <ng-template>
+              <app-typeahead
+                class="ion-page"
+                title="Select Stockist"
+                [items]="stockists"    
+                mode="ios"             
+                (selectionChange)="stockistSelectionEvent($event,modal)"
+                (selectionCancel)="modal.dismiss()"
+              ></app-typeahead>        
+            </ng-template>      
+          </ion-modal>
+          </ion-col>
+        </ion-row>
+      </ion-grid>           
+
+      <p class="error-text mb-0 mt-1" style="color: red; margin-bottom: 8px; margin-top: 15px;margin-left: 7%;"
+           *ngIf="submitFlag && !Claims.get('stockistId')?.touched " >
+            This field is required
+      </p>    
+
+     
+      
+      <ion-grid  style="margin-bottom: -25px;  margin-top: -30px;" >
+        <ion-row size="12" style="margin-top: 10px;">
+          <ion-col size="6">  
+            <ion-text class="toolbar_text_order_default_font">Manufacturer  :</ion-text>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col style="display: flex;">         
+            <ion-select
+             class="select"
+             class="input"
+             [interfaceOptions]="customAlertOption"
+             placeholder="Select Manufacturer"
+             (ionChange)="manufacturSelect($event)"
+             formControlName="manufacturer"
+             label-placement="stacked"> 
+            <ion-select-option *ngFor="let m of manufactur " value={{m.manufacturerId}} >{{m.manufacturerName}}</ion-select-option>          
+           </ion-select>        
+          </ion-col>
+        </ion-row>
+      </ion-grid>  
+      
+
+      <p class="error-text mb-0 mt-1" style="color: red; margin-bottom: 8px; margin-top: 15px;margin-left: 7%;"
+      *ngIf="submitFlag && !Claims.get('manufacturer')?.value " >
+       This field is required
+      </p> 
+
+      <ion-grid  style="margin-bottom: -25px;  margin-top: -30px;" >
+        <ion-row size="12" style="margin-top: 10px;">
+          <ion-col size="6">
+            <ion-text class="toolbar_text_order_default_font">Transporter  :</ion-text>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col style="display: flex;"> 
+            <ion-select           
+             class="select"
+             class="input"
+             [interfaceOptions]="customAlertOptio"
+             placeholder="Select Transporter"
+             (ionChange)="transportSelect($event)"
+             formControlName="transporterId"
+             label-placement="stacked"> 
+           <ion-select-option *ngFor="let transport of transports" value={{transport.transportId}} >{{transport.transportName}}</ion-select-option>          
+           </ion-select>
+          </ion-col>
+        </ion-row>
+      </ion-grid>     
+    
+      <p class="error-text mb-0 mt-1" style="color: red; margin-bottom: 8px; margin-top: 15px;margin-left: 7%;"
+           *ngIf="submitFlag && !Claims.get('transporterId')?.value" >
+            This field is required
+      </p> 
+      
+
+      <ion-grid  style="margin-bottom: -25px;  margin-top: -30px;" >
+        <ion-row size="12" style="margin-top: 10px;">
+          <ion-col size="6">
+            <ion-text class="toolbar_text_order_default_font">LR Number :</ion-text>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="12"> 
+            <input type="text" formControlName="lrNumber" class="input">
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    
+      <p class="error-text mb-0 mt-1" style="color: red; margin-bottom: 8px; margin-top: 15px;margin-left: 7%;"
+           *ngIf="submitFlag && !Claims.get('lrNumber')?.value " >
+            This field is required
+      </p>    
+     
+      <ion-grid  style="margin-bottom: -25px;  margin-top: -30px;" >
+        <ion-row size="12" style="margin-top: 10px;">
+          <ion-col size="6">
+            <ion-text class="toolbar_text_order_default_font">LR Booking Date :</ion-text>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="12">
+            <input  type="date" formControlName="lrBookingDate" class="input " placeholder="dd-MM-yyyy" > 
+          </ion-col>
+        </ion-row>
+      </ion-grid>     
+      
+      <p class="error-text mb-0 mt-1" style="color: red; margin-bottom: 8px; margin-top: 15px;margin-left: 7%;"
+      *ngIf="submitFlag && !Claims.get('lrBookingDate')?.value" >
+       This field is required
+      </p> 
+
+      <ion-grid  style="margin-bottom: -25px;  margin-top: -30px;" >
+        <ion-row size="12" style="margin-top: 10px;">
+          <ion-col size="6">
+            <ion-text class="toolbar_text_order_default_font">No of Boxes :</ion-text>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="12">
+            <input  type="number" formControlName="numberOfBoxes"   class="input" >       
+          </ion-col>
+        </ion-row>
+      </ion-grid>       
+    
+      <p class="error-text mb-0 mt-1" style="color: red; margin-bottom: 8px; margin-top: 15px;margin-left: 7%;"
+      *ngIf="submitFlag && !Claims.get('numberOfBoxes')?.value" >
+       This field is required
+      </p> 
+
+      
+
+      
+      <ion-grid  style="margin-bottom: -25px;  margin-top: -30px;" >
+        <ion-row size="12" style="margin-top: 10px;">
+          <ion-col size="6">
+            <ion-text class="toolbar_text_order_default_font">Received Date :</ion-text>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="12">
+            <input  type="date" formControlName="receivedDate" class="input "  placeholder="dd-MM-yyyy" >          
+          </ion-col>
+        </ion-row>
+      </ion-grid>       
+      
+      <p class="error-text mb-0 mt-1" style="color: red; margin-bottom: 8px; margin-top: 15px;margin-left: 7%;"
+      *ngIf="submitFlag && !Claims.get('receivedDate')?.value" >
+       This field is required
+      </p> 
+      
+     </form>
+    
+    <ion-button  class="view_bt_st" (click)="received()" >Received</ion-button>
+  </ion-card>
+  
+</div>
+
+
+  <!-- claim Received  -->
+<div *ngIf=" returnStatus === 'PENDING'">
+  <ion-card class="card" style="line-height: 34px; border-radius: 20px;"  >
+    <form [formGroup]="claim">
+      
+      <ion-grid  style="margin-bottom: -25px; ">
+        <ion-row size="12" style="margin-top: 10px;">
+          <ion-col size="6">
+            <ion-text class="toolbar_text_order_default_font">Claim Number :</ion-text>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="12">
+            <input    class="input " value="{{returnDetail?.returnData.claimNumber}}" readonly >       
+          </ion-col>
+        </ion-row>
+      </ion-grid>     
+      
+
+      
+
+      <ion-grid  style="margin-bottom: -25px; ">
+        <ion-row size="12" style="margin-top: 10px;">
+          <ion-col size="6">
+            <ion-text class="toolbar_text_order_default_font">Stockist :</ion-text>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="12">
+            <input    class="input " value="{{returnDetail?.returnData.stockistName}}" readonly >       
+          </ion-col>
+        </ion-row>
+      </ion-grid>   
+
+      <ion-grid  style="margin-bottom: -25px; ">
+        <ion-row size="12" style="margin-top: 10px;">
+          <ion-col size="6">
+            <ion-text class="toolbar_text_order_default_font">Location :</ion-text>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="12">
+            <input    class="input " value="{{returnDetail?.returnData.location}}" readonly >       
+          </ion-col>
+        </ion-row>
+      </ion-grid>  
+      
+      <ion-grid  style="margin-bottom: -25px; ">
+        <ion-row size="12" style="margin-top: 10px;">
+          <ion-col size="6">
+            <ion-text class="toolbar_text_order_default_font">Manufacturer :</ion-text>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="12">
+            <input    class="input " value="{{returnDetail?.returnData.manufacturertName}}" readonly >       
+          </ion-col>
+        </ion-row>
+      </ion-grid> 
+          
+      <ion-grid  style="margin-bottom: -25px; ">
+        <ion-row size="12" style="margin-top: 10px;">
+          <ion-col size="6">
+            <ion-text class="toolbar_text_order_default_font">Claim Date :</ion-text>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="12">
+            <input  type="date" formControlName="claimDate" class="input"  placeholder="dd-MM-yyyy" >      
+          </ion-col>
+        </ion-row>
+      </ion-grid>  
+      
+      <p class="error-text mb-0 mt-1" style="color: red; margin-bottom: 8px; margin-top: 15px;margin-left: 7%;"
+      *ngIf="submitFlag && !claim.get('claimDate')?.value" >
+       This field is required
+      </p>
+      
+
+      <ion-grid  style="margin-bottom: -25px;  margin-top: -30px;" >
+        <ion-row size="12" style="margin-top: 10px;">
+          <ion-col size="6">
+            <ion-text class="toolbar_text_order_default_font">Transporter  :</ion-text>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col style="display: flex;"> 
+            <ion-select           
+             class="select"
+             class="input" 
+             [interfaceOptions]="customAlertOptio"
+             placeholder="Select Transporter"
+             (ionChange)="transportSelect($event)"
+             formControlName="transporterId"
+             label-placement="stacked"> 
+           <ion-select-option *ngFor="let transport of transports" value={{transport?.transportId}} >{{transport?.transportName}}</ion-select-option>          
+           </ion-select>
+          </ion-col>
+        </ion-row>
+      </ion-grid>       
+    
+      <p class="error-text mb-0 mt-1" style="color: red; margin-bottom: 8px; margin-top: 15px;margin-left: 7%;"
+        *ngIf="submitFlag && !claim.get('transporterId')?.value" >
+        This field is required
+      </p> 
+
+      <ion-grid  style="margin-bottom: -25px;  margin-top: -30px;" >
+        <ion-row size="12" style="margin-top: 10px;">
+          <ion-col size="6">
+            <ion-text class="toolbar_text_order_default_font">LR Number :</ion-text>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="12">
+            <input  type="text" formControlName="lrNumber"  class="input" >            
+          </ion-col>
+        </ion-row>
+      </ion-grid>     
+
+    
+      <p class="error-text mb-0 mt-1" style="color: red; margin-bottom: 8px; margin-top: 15px;margin-left: 7%;"
+        *ngIf="submitFlag && !claim.get('lrNumber')?.value " >
+        This field is required
+      </p>
+
+      <ion-grid  style="margin-bottom: -25px;  margin-top: -30px;" >
+        <ion-row size="12" style="margin-top: 10px;">
+          <ion-col size="6">
+            <ion-text class="toolbar_text_order_default_font">LR Booking Date :</ion-text>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="12">
+            <input  type="date" formControlName="lrBookingDate"  class="input " >            
+          </ion-col>
+        </ion-row>
+      </ion-grid>      
+
+      <p class="error-text mb-0 mt-1" style="color: red; margin-bottom: 8px; margin-top: 15px;margin-left: 7%;"
+        *ngIf="submitFlag && !claim.get('lrBookingDate')?.value" >
+        This field is required
+      </p> 
+
+      <ion-grid  style="margin-bottom: -25px;  margin-top: -30px;" >
+        <ion-row size="12" style="margin-top: 10px;">
+          <ion-col size="6">
+            <ion-text class="toolbar_text_order_default_font">No of Boxes :</ion-text>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="12">
+            <input  type="number" formControlName="numberOfBoxes"   class="input" >             
+          </ion-col>
+        </ion-row>
+      </ion-grid>     
+    
+      <p class="error-text mb-0 mt-1" style="color: red; margin-bottom: 8px; margin-top: 15px;margin-left: 7%;"
+      *ngIf="submitFlag && !claim.get('numberOfBoxes')?.value" >
+       This field is required
+      </p> 
+
+      
+
+      <ion-grid  style="margin-bottom: -25px;  margin-top: -30px;" >
+        <ion-row size="12" style="margin-top: 10px;">
+          <ion-col size="6">
+            <ion-text class="toolbar_text_order_default_font">Received Date :</ion-text>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="12">
+            <input  type="date" formControlName="receivedDate" class="input " >             
+          </ion-col>
+        </ion-row>
+      </ion-grid>       
+      
+      <p class="error-text mb-0 mt-1" style="color: red; margin-bottom: 8px; margin-top: 15px;margin-left: 7%;"
+      *ngIf="submitFlag && !claim.get('receivedDate')?.value" >
+       This field is required
+      </p>
+      
+     </form>
+    
+    <ion-button  class="view_bt_st" (click)="claimReceived()" >Received</ion-button>   
+  </ion-card>
+
+</div>  
+
+  <!-- Return checked   RECEIVED -->
+  <div  *ngIf="returnStatus === 'RECEIVED'" >
+  <ion-card class="card_style" style="line-height: 34px; border-radius: 20px;" >  
+    
+    <ion-grid  style="margin-bottom: -25px; ">
+      <ion-row size="12" style="margin-top: 10px;">
+        <ion-col size="6">
+          <ion-text class="toolbar_text_order_default_font">Serial Number :</ion-text>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12">
+          <input    class="input " value="{{returnDetail?.returnData.returnNumber}}" readonly >       
+        </ion-col>
+      </ion-row>
+    </ion-grid> 
+    
+    
+    
+    <ion-grid  style="margin-bottom: -25px; ">
+      <ion-row size="12" style="margin-top: 10px;">
+        <ion-col size="6">
+          <ion-text class="toolbar_text_order_default_font">Claim Date :</ion-text>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12">
+          <input    class="input " value="{{returnDetail?.returnData.claimDate | date: 'dd-MM-yyyy'}}" readonly >       
+        </ion-col>
+      </ion-row>
+    </ion-grid> 
+
+    
+    <ion-grid  style="margin-bottom: -25px; ">
+      <ion-row size="12" style="margin-top: 10px;">
+        <ion-col size="6">
+          <ion-text class="toolbar_text_order_default_font">Received Date :</ion-text>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12">
+          <input    class="input " value="{{returnDetail?.returnData.receivedDate | date: 'dd-MM-yyyy'}}" readonly >       
+        </ion-col>
+      </ion-row>
+    </ion-grid> 
+
+    <ion-grid  style="margin-bottom: -25px; ">
+      <ion-row size="12" style="margin-top: 10px;">
+        <ion-col size="6">
+          <ion-text class="toolbar_text_order_default_font">Stockist  :</ion-text>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12">
+          <input    class="input " value="{{returnDetail?.returnData.stockistName}}" readonly >       
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-grid  style="margin-bottom: -25px; ">
+      <ion-row size="12" style="margin-top: 10px;">
+        <ion-col size="6">
+          <ion-text class="toolbar_text_order_default_font">Location :</ion-text>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12">
+          <input    class="input " value="{{returnDetail?.returnData.location}}" readonly >       
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    
+    <ion-grid  style="margin-bottom: -25px; ">
+      <ion-row size="12" style="margin-top: 10px;">
+        <ion-col size="6">
+          <ion-text class="toolbar_text_order_default_font">Transporter :</ion-text>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12">
+          <input    class="input " value="{{returnDetail?.returnData.transporterName}}" readonly >       
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+
+    <ion-grid  style="margin-bottom: -25px; ">
+      <ion-row size="12" style="margin-top: 10px;">
+        <ion-col size="6">
+          <ion-text class="toolbar_text_order_default_font">Lr Number :</ion-text>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12">
+          <input    class="input " value="{{returnDetail?.returnData.lrNumber}}" readonly >       
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+
+    <ion-grid  style="margin-bottom: -25px; ">
+      <ion-row size="12" style="margin-top: 10px;">
+        <ion-col size="6">
+          <ion-text class="toolbar_text_order_default_font">Lr Booking Date :</ion-text>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12">
+          <input    class="input " value="{{returnDetail?.returnData.lrBookingDate | date: 'dd-MM-yyyy' }}" readonly >       
+        </ion-col>
+      </ion-row>
+    </ion-grid> 
+    
+    
+    <ion-grid  style="margin-bottom: -25px; ">
+      <ion-row size="12" style="margin-top: 10px;">
+        <ion-col size="6">
+          <ion-text class="toolbar_text_order_default_font">No of Boxes :</ion-text>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12">
+          <input    class="input " value="{{returnDetail?.returnData.numberOfBoxes}}" readonly >       
+        </ion-col>
+      </ion-row>
+    </ion-grid> 
+    
+    
+    <ion-grid  style="margin-bottom: -25px; ">
+      <ion-row size="12" style="margin-top: 10px;">
+        <ion-col size="6">
+          <ion-text class="toolbar_text_order_default_font">Status :</ion-text>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12">
+          <input    class="input " value="{{returnDetail?.returnData.status}}" readonly >       
+        </ion-col>
+      </ion-row>
+    </ion-grid>   
+
+    <form [formGroup]="checking"> 
+
+    <ion-grid  style="margin-bottom: -25px; ">
+      <ion-row size="12" style="margin-top: 10px;">
+        <ion-col size="6">
+          <ion-text class="toolbar_text_order_default_font">Claim Number :</ion-text>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12">
+          <input formControlName="claimNumber" class="input"  >       
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+
+    <p class="error-text mb-0 mt-1" style="color: red; margin-bottom: 8px; margin-top: 15px;margin-left: 7%;"
+      *ngIf="!checking.get('claimNumber')?.value " >
+       This field is required
+    </p>
+     
+     
+      <ion-grid  style="margin-bottom: -25px; margin-top: -20px;" >
+        <ion-row size="12" style="margin-top: 10px;">
+          <ion-col size="6">
+            <ion-text class="toolbar_text_order_default_font">Claim Type :</ion-text>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col style="display: flex;">
+            <ion-select
+            class="input"
+            [interfaceOptions]="customAlertOpti"
+             placeholder="Select Type"
+             (ionChange)="claimTypeSelect($event)"
+             formControlName="claimType"
+             label-placement="stacked"> 
+             <ion-select-option value="Saleable">Saleable</ion-select-option>
+             <ion-select-option value="NonSaleable">Non-Saleable</ion-select-option>
+             <ion-select-option value="Both">Both</ion-select-option>         
+           </ion-select>
+          </ion-col>
+        </ion-row>
+      </ion-grid>       
+
+      
+      <p class="error-text mb-0 mt-1" style="color: red; margin-bottom: 8px; margin-top: 15px;margin-left: 7%;"
+      *ngIf="claimSelect && !checking.get('claimType')?.value" >
+       This field is required
+      </p>
+
+      <div *ngIf="selectedClaimType === 'NonSaleable' || selectedClaimType === 'Both' ">
+        
+        <ion-grid  style="margin-bottom: -25px;  margin-top: -30px;" >
+          <ion-row size="12" style="margin-top: 10px;">
+            <ion-col size="6">
+              <ion-text class="toolbar_text_order_default_font">Non-Saleable Cases :</ion-text>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col style="display: flex;">
+              <input  type="number"   class="text_field" class="input" formControlName="numOfNonSalableCases">
+            </ion-col>
+          </ion-row>
+        </ion-grid>                     
+      </div>
+
+      <p class="error-text mb-0 mt-1" style="color: red; margin-bottom: 8px; margin-top: 15px;margin-left: 7%;"
+      *ngIf="(selectedClaimType === 'NonSaleable' || selectedClaimType === 'Both') && claimSelect && !checking.get('numOfNonSalableCases')?.value" >
+       This field is required
+      </p>
+
+      <ion-grid  style="margin-bottom: -25px;  margin-top: -30px;" >
+        <ion-row size="12" style="margin-top: 10px;">
+          <ion-col size="6">
+            <ion-text class="toolbar_text_order_default_font">No of Line Items :</ion-text>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col style="display: flex;">
+            <input  type="number" formControlName="numberOfLineItems"  class="text_field" class="input" >
+          </ion-col>
+        </ion-row>
+      </ion-grid>          
+      
+      <p class="error-text mb-0 mt-1" style="color: red; margin-bottom: 8px; margin-top: 15px;margin-left: 7%;"
+      *ngIf="updateButton && !checking.get('numberOfLineItems')?.value" >
+       This field is required
+      </p> 
+
+
+      
+      <ion-row size="12" style="margin-top: 17px">
+        <ion-col size="6">
+          <ion-text class="toolbar_text order_default_font" >Mismatch</ion-text>
+        </ion-col>
+        <ion-col> 
+          <span class="semi_colon">:</span>
+          <ion-toggle           
+            (ionChange)="onToggleChange($event)" 
+            formControlName="misMatch" >
+          </ion-toggle>
+        </ion-col>           
+      </ion-row>
+
+      <div *ngIf="isToggleOn === true">
+
+        <ion-grid  style="margin-bottom: -25px; margin-top: -30px;" >
+          <ion-row size="12" style="margin-top: 10px;">
+            <ion-col size="6">
+              <ion-text class="toolbar_text_order_default_font">Mismatch Type :</ion-text>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col style="display: flex;">
+              <ion-select
+               class="input" 
+               [interfaceOptions]="customAlertOpt"
+               placeholder="Select Type"
+               (ionChange)="mismatchTypeSelect($event)"
+               formControlName="misMatchType"
+               multiple="true" > 
+               <ion-select-option value="Claim Paper Missing">Claim Paper Missing</ion-select-option>
+               <ion-select-option value="Different Product">Different Product</ion-select-option>
+               <ion-select-option value="Other">Other</ion-select-option>         
+               <ion-select-option value="Different Batch">Different Batch</ion-select-option>         
+               <ion-select-option value="Excess">Excess</ion-select-option>         
+               <ion-select-option value="Shortage">Shortage</ion-select-option>         
+               <ion-select-option value="Not Sold by Tenant">Not Sold by Tenant</ion-select-option>         
+               <ion-select-option value="Not Sold by Manufacturer">Not Sold by Manufacturer</ion-select-option>         
+              </ion-select>
+            </ion-col>
+          </ion-row>
+        </ion-grid>         
+      </div>
+
+      <ion-row style="display: flex; justify-content: center; align-items: center; margin-bottom: 15px; ">         
+        <ion-button (click)="takePicture($event)" style=" --background-activated: none; --background: rgb(235, 231, 231); color: black; margin-top: 30px;" >Upload Claim
+        <ion-icon name="camera-outline" style="color: 000000; display: flex; align-items: center; margin-left: 10px ;" ></ion-icon>
+        </ion-button>
+      </ion-row>  
+
+      <p class="error-text mb-0 mt-1" style="color: red; margin-bottom: 8px; margin-top: 15px;margin-left: 7%;"
+      *ngIf="updateButton && !checking.get('documentURL')?.touched  && !btn " >
+      Please Attach Document Before checking
+      </p>
+
+      <div *ngIf="docu">            
+       <div class="grid-container">
+         <ion-card class="back-ground" *ngFor="let file of imageDataUrl; let i = index">
+           <ion-row style="padding: 12px;">
+             <ion-col> {{ file.name }} </ion-col>
+             <ion-icon style="height: 27px; width: 35px; margin-top: 8px;" name="trash-outline" (click)="deleteFiles(i)" ></ion-icon>
+           </ion-row>
+         </ion-card>
+       </div>
+
+       <ion-button (click)="convertImageToPDF()" fill="clear" class="view" >finish</ion-button> 
+    </div>
+
+
+    <ion-grid  style="margin-bottom: -25px;  margin-top: -30px;" >
+      <ion-row size="12" style="margin-top: 10px;">
+        <ion-col size="6">
+          <ion-text class="toolbar_text_order_default_font">Remarks :</ion-text>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col style="display: flex;">
+          <textarea class="text_area" formControlName="remarks"></textarea> 
+        </ion-col>
+      </ion-row>
+    </ion-grid> 
+
+       
+      
+  </form>
+
+  <div *ngIf="upload">
+    <ion-button class="view_bt_st"  [disabled]="true">Checking I</ion-button>   
+  </div>
+  <div *ngIf="!upload">
+    <ion-button class="view_bt_st" (click)="update()" [disabled]="false">Checking I</ion-button>   
+  </div>
+  
+  </ion-card>
+
+</div>
+
+
+
+<!-- After checked  -->
+<div  *ngIf="returnStatus !== 'created' && returnStatus !== 'PENDING' && returnStatus !== 'RECEIVED'" >
+  <ion-card class="card_style" style="line-height: 34px; border-radius: 20px;" >
+    
+    
+
+    <ion-grid  style="margin-bottom: -25px; ">
+      <ion-row size="12" style="margin-top: 10px;">
+        <ion-col size="6">
+          <ion-text class="toolbar_text_order_default_font">Serial Number :</ion-text>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12">
+          <input    class="input " value="{{returnDetail?.returnData.returnNumber}}" readonly >       
+        </ion-col>
+      </ion-row>
+    </ion-grid> 
+
+
+    <ion-grid  style="margin-bottom: -25px; ">
+      <ion-row size="12" style="margin-top: 10px;">
+        <ion-col size="6">
+          <ion-text class="toolbar_text_order_default_font">Claim Number :</ion-text>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12">
+          <input    class="input " value="{{returnDetail?.returnData.claimNumber}}" readonly >       
+        </ion-col>
+      </ion-row>
+    </ion-grid> 
+
+    <ion-grid  style="margin-bottom: -25px; ">
+      <ion-row size="12" style="margin-top: 10px;">
+        <ion-col size="6">
+          <ion-text class="toolbar_text_order_default_font">Claim Date :</ion-text>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12">
+          <input    class="input " value="{{returnDetail?.returnData.claimDate | date: 'dd-MM-yyyy'}}" readonly >       
+        </ion-col>
+      </ion-row>
+    </ion-grid> 
+
+
+    <ion-grid  style="margin-bottom: -25px; ">
+      <ion-row size="12" style="margin-top: 10px;">
+        <ion-col size="6">
+          <ion-text class="toolbar_text_order_default_font">Received Date :</ion-text>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12">
+          <input    class="input " value="{{returnDetail?.returnData.receivedDate | date: 'dd-MM-yyyy'}}" readonly >       
+        </ion-col>
+      </ion-row>
+    </ion-grid> 
+    
+    
+    <ion-grid  style="margin-bottom: -25px; ">
+      <ion-row size="12" style="margin-top: 10px;">
+        <ion-col size="6">
+          <ion-text class="toolbar_text_order_default_font">Stockist :</ion-text>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12">
+          <input    class="input " value="{{returnDetail?.returnData.stockistName }}" readonly >       
+        </ion-col>
+      </ion-row>
+    </ion-grid>    
+
+
+    <ion-grid  style="margin-bottom: -25px; ">
+      <ion-row size="12" style="margin-top: 10px;">
+        <ion-col size="6">
+          <ion-text class="toolbar_text_order_default_font">Location :</ion-text>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12">
+          <input    class="input " value="{{returnDetail?.returnData.location}}" readonly >       
+        </ion-col>
+      </ion-row>
+    </ion-grid>    
+
+
+    <ion-grid  style="margin-bottom: -25px; ">
+      <ion-row size="12" style="margin-top: 10px;">
+        <ion-col size="6">
+          <ion-text class="toolbar_text_order_default_font">Transporter :</ion-text>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12">
+          <input    class="input " value="{{returnDetail?.returnData.transporterName}}" readonly >       
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+
+    <ion-grid  style="margin-bottom: -25px; ">
+      <ion-row size="12" style="margin-top: 10px;">
+        <ion-col size="6">
+          <ion-text class="toolbar_text_order_default_font">LR Number :</ion-text>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12">
+          <input    class="input " value="{{returnDetail?.returnData.lrNumber}}" readonly >       
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+
+    <ion-grid  style="margin-bottom: -25px; ">
+      <ion-row size="12" style="margin-top: 10px;">
+        <ion-col size="6">
+          <ion-text class="toolbar_text_order_default_font">Lr Booking Date :</ion-text>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12">
+          <input    class="input " value="{{returnDetail?.returnData.lrBookingDate  | date: 'dd-MM-yyyy'}}" readonly >       
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+
+    <ion-grid  style="margin-bottom: -25px; ">
+      <ion-row size="12" style="margin-top: 10px;">
+        <ion-col size="6">
+          <ion-text class="toolbar_text_order_default_font">No of Boxes :</ion-text>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12">
+          <input    class="input " value="{{returnDetail?.returnData.numberOfBoxes}}" readonly >       
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+
+    <ion-grid  style="margin-bottom: -25px; ">
+      <ion-row size="12" style="margin-top: 10px;">
+        <ion-col size="6">
+          <ion-text class="toolbar_text_order_default_font">Status :</ion-text>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12">
+          <input    class="input " value="{{returnDetail?.returnData.status}}" readonly >       
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-grid  style="margin-bottom: -25px; ">
+      <ion-row size="12" style="margin-top: 10px;">
+        <ion-col size="6">
+          <ion-text class="toolbar_text_order_default_font">Return Type :</ion-text>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12">
+          <input    class="input " value="{{returnDetail?.returnData.claimType}}" readonly >       
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-grid  >
+      <ion-row size="12" style="margin-top: 10px;">
+        <ion-col size="6">
+          <ion-text class="toolbar_text_order_default_font">No of Line Items :</ion-text>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12">
+          <input    class="input " value="{{returnDetail?.returnData.numberOfLineItems}}" readonly >       
+        </ion-col>
+      </ion-row>
+    </ion-grid>   
+
+    <div *ngIf="isSecondCheck && typeOfGrrn === 'Salable' && returnDetail?.returnData.salabletatus === 'GRRN_CREATED' "  >
+      <ion-button class="view_bt_st" (click)="checked('Saleable')">check II (S)</ion-button>   
+    </div> 
+    <div *ngIf="isSecondCheck && typeOfGrrn === 'NonSalable' && returnDetail?.returnData.nonSalabletatus === 'GRRN_CREATED'  " >
+      <ion-button class="view_bt_st" (click)="checked('NonSaleable')">check II (NS)</ion-button>   
+    </div>
+   
+  </ion-card>
+
+</div>
+
+
+ <!-- <div *ngIf="returnStatus !== 'created' && returnStatus !== 'PENDING'" >
+  <ion-button (click)="viewStatus()" class="view_bt_st" >
+    Time Line
+    <ion-icon *ngIf="status" name="chevron-up-outline" class="arrow_icon" ></ion-icon>
+    <ion-icon *ngIf="!status" name="chevron-down-outline" class="arrow_icon" ></ion-icon>
+   </ion-button>
+  </div> -->
+ <!-- <ion-card class="card_style" *ngIf="status">
+  <ion-row style="margin: 16px; margin-top: 45px; margin-left: 10%">
+    <div class="container">
+      <span *ngFor="let history of returnDetail?.history; let i = index">
+        <div class="circle-bar-container">
+          <span class="circles">
+            <img src="assets/Tick.svg" alt="">
+          </span>
+          <span class="circle-text" >
+            {{'Return '+history.status+' on '+ history.historyOn}}
+          </span>
+          <span class="bar" *ngIf="(i !== 6)"></span>          
+        </div>
+      </span>
+    </div>
+  </ion-row>  
+ </ion-card> -->
+</ion-content>

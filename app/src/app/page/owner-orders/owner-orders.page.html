@@ -1,0 +1,141 @@
+<app-dashboard-header></app-dashboard-header>
+
+<ion-header [translucent]="true">
+  
+</ion-header>
+
+<ion-content >
+  <ion-toolbar>
+    <ion-title>Order Performance</ion-title>
+    <ion-buttons slot="end" size="small" >
+      <ion-toggle [(ngModel)]="isMonthly" color="primary" class="custom-toggle" checked="false">
+        <ion-label>{{ isMonthly ? 'Monthly' : 'Yearly' }}</ion-label>
+      </ion-toggle>
+    </ion-buttons>
+  </ion-toolbar>
+
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Order-Performance</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div class="months" scroll-x="true"  style="max-width: fit-content; overflow-x:scroll;" *ngIf="isMonthly===true">    
+    <div *ngFor="let month of months" >
+      <ion-button [class.clicked-button]="month.fillcolor === true" size="small"  class="btn" fill="clear" (click)="selectedMonth(month)">{{month.name}}</ion-button>
+    </div>
+  </div>
+  
+  <ion-row class="i">
+    <button class="btn1">Performance</button>
+      <button class="btn2">Deadline</button>
+  </ion-row>
+  
+  
+
+  <div class="card" style="margin-bottom: 20px;">
+    <ion-card class="cardbox">
+        <ion-card-header>
+            <ion-fab vertical="top" horizontal="end" style="position: absolute; top: 5px; right: 5px;">
+                <ion-fab-button color="tertiary" size="small">
+                    {{ totalEmailReceived }}
+                </ion-fab-button>
+            </ion-fab>
+        </ion-card-header>
+        <ion-card-content>
+            Total Email Received
+        </ion-card-content>
+    </ion-card>
+
+    <ion-card class="cardbox" style="margin-left: 10px;">
+        <ion-card-header>
+            <ion-fab vertical="top" horizontal="end" style="position: absolute; top: 5px; right: 5px;">
+                <ion-fab-button color="tertiary" size="small">
+                    {{ totalOrders }}
+                </ion-fab-button>
+            </ion-fab>
+        </ion-card-header>
+        <ion-card-content>
+            Total Orders 
+        </ion-card-content>
+    </ion-card>
+</div>
+
+
+  <div class="card">
+    <ion-card class="cardbox">
+      <ion-card-header>
+        <ion-fab vertical="top" horizontal="end" style="position: absolute; top: 5px; right: 5px;">
+          <ion-fab-button color="tertiary" size="small">
+            {{ totalTickets }}
+          </ion-fab-button>
+        </ion-fab>
+      </ion-card-header>
+      <ion-card-content>
+        Total Tickets
+      </ion-card-content>
+    </ion-card>
+    
+
+    <ion-card class="cardbox" style="margin-left: 10px;">
+      <ion-card-header>
+        <ion-fab vertical="top" horizontal="end" style="position: absolute; top: 5px; right: 5px;">
+          <ion-fab-button color="tertiary" size="small">
+            {{ totalUnassigned }}
+          </ion-fab-button>
+        </ion-fab>
+      </ion-card-header>
+      <ion-card-content>
+        Total Unassigned
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <div class="user-cards">
+  <ion-card class="users-card">
+    <ion-card-header>
+      Users Performance
+    </ion-card-header>
+    <ion-card-content>
+      <ion-grid>
+        <ion-row class="labels-row">
+          <ion-col size-md="4" size-sm="12" class="ion-text-wrap ion-padding">
+            <ion-label class="header-label">Username</ion-label>
+          </ion-col>
+          <ion-col size-md="2" size-sm="6" class="ion-text-wrap ion-padding">
+            <ion-label class="header-label">Email received</ion-label>
+          </ion-col>
+          <ion-col size-md="2" size-sm="6" class="ion-text-wrap ion-padding">
+            <ion-label class="header-label">Orders</ion-label>
+          </ion-col>
+          <ion-col size-md="2" size-sm="6" class="ion-text-wrap ion-padding">
+            <ion-label class="header-label">Tickets</ion-label>
+          </ion-col>
+          <ion-col size-md="2" size-sm="6" class="ion-text-wrap ion-padding">
+            <ion-label class="header-label">Unassigned</ion-label>
+          </ion-col>
+        </ion-row>
+  
+        <ion-row *ngFor="let username of userNames" class="data-row">
+          <ion-col size-md="4" size-sm="12" class="ion-text-wrap ion-padding">
+            {{ username }}
+          </ion-col>
+          <ion-col size-md="2" size-sm="6" class="ion-text-wrap ion-padding">
+            {{ emailReceivedNumbers[userNames.indexOf(username)] }}
+          </ion-col>
+          <ion-col size-md="2" size-sm="6" class="ion-text-wrap ion-padding">
+            {{ orders[userNames.indexOf(username)] }}
+          </ion-col>
+          <ion-col size-md="2" size-sm="6" class="ion-text-wrap ion-padding">
+            {{ tickets[userNames.indexOf(username)] }}
+          </ion-col>
+          <ion-col size-md="2" size-sm="6" class="ion-text-wrap ion-padding">
+            {{ unassigned[userNames.indexOf(username)] }}
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+  </div>
+
+   

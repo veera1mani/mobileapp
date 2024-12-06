@@ -1,0 +1,112 @@
+<div>
+  <ion-row class="background padding_st">
+    <ion-card class="back_bg">
+      <ion-icon class="icon_size" name="chevron-back-outline"></ion-icon>
+    </ion-card>
+    <ion-text class="toolbar_text">Tickets</ion-text>
+  </ion-row>
+  <ion-row size="12" class="background top_searchbar">
+    <ion-col>
+      <ion-searchbar
+        mode="ios"
+        placeholder="Search invoice number"
+        class="search_bar"
+        (ionInput)="onSearch($event)"
+      ></ion-searchbar>
+    </ion-col>
+    <div class="filter" id="popover-tickets-bottom">
+      <ion-icon name="options-outline" class="filter_size"></ion-icon>
+      <ion-popover mode="ios" trigger="popover-tickets-bottom" [dismissOnSelect]="true">
+        <ng-template>
+          <ion-content>
+            <ion-list>
+              <ion-item
+                [button]="true"
+                [detail]="false"
+                (click)="filterOrders('All')"
+                >All Orders</ion-item
+              >
+              <ion-item
+                [button]="true"
+                [detail]="false"
+                (click)="filterOrders('Shipped')"
+                >Shipped Order</ion-item
+              >
+              <ion-item
+                [button]="true"
+                [detail]="false"
+                (click)="filterOrders('Cancelled')"
+                >Cancelled Order</ion-item
+              >
+              <ion-item
+                [button]="true"
+                [detail]="false"
+                (click)="filterOrders('Delivered')"
+                >Delivered Order</ion-item
+              >
+            </ion-list>
+          </ion-content>
+        </ng-template>
+      </ion-popover>
+    </div>
+  </ion-row>
+</div>
+<ion-content class="background full_view">
+  <ion-card *ngFor="let item of ticketList" class="card_style">
+    <div class="flex_col">
+      <ion-row class="card_align">
+        <ion-text class="toolbar_text font_style" style="margin-left: 0px">
+          {{'Ticket# : '+item?.ticketId}}
+        </ion-text>
+        <ion-text class="toolbar_text font_style"
+          >Days : {{calculateDays(item.createdOn)}}
+        </ion-text>
+      </ion-row>
+      <ion-row style="margin-top: 8px">
+        <ion-col size="4.5" class="col_details">
+          <ion-text>Subject</ion-text>
+          <ion-text>:</ion-text>
+        </ion-col>
+        <ion-col>
+          <ion-text>{{item?.subject}}</ion-text>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="4.5" class="col_details">
+          <ion-text>Customer</ion-text>
+          <ion-text>:</ion-text>
+        </ion-col>
+        <ion-col>
+          <ion-text>{{item?.custName}}</ion-text>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="4.5" class="col_details">
+          <ion-text>Email date</ion-text>
+          <ion-text>:</ion-text>
+        </ion-col>
+        <ion-col>
+          <ion-text>{{item.createdOn}}</ion-text>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="view_outlet">
+        <div
+          class="order_Style button_bg"
+          style="color: rgba(245, 123, 32, 1); background: #fde2ce"
+        >
+          <ion-text class="view_det_color" [routerLink]="['/order-details']"
+            >View Details</ion-text
+          >
+          <ion-icon name="chevron-forward-outline" color="green"></ion-icon>
+        </div>
+        <div
+          class="order_Style"
+          [ngStyle]="{'background' : item?.status==='Delivered' ? '#CF142B' :item?.status==='Shipped'? '#52A811':'#afaf37'}"
+        >
+          <ion-text style="color: white">{{item?.status}}</ion-text>
+        </div>
+      </ion-row>
+    </div>
+  </ion-card>
+</ion-content>

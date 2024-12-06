@@ -1,0 +1,395 @@
+#container {
+    text-align: center;
+  
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  
+  #container strong {
+    font-size: 20px;
+    line-height: 26px;
+  }
+  
+  .content_st{
+    --padding-bottom: 20px;//common code put in common.css
+}
+
+ 
+.view_bt_st{
+    --background-activated: none; 
+    --background: rgba(245,123,32,1);
+    width: -webkit-fill-available;  
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-top: 10%;
+}
+.toolbar_text_order_default_font{
+  white-space: nowrap;
+  text-align: left;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  align-items: end;
+  display: flex;
+  margin-left: 10px;
+  margin-bottom: -13px;
+  margin-top: 4px;
+  font-size: 16px;
+}
+
+  
+  
+  #container p {
+    font-size: 16px;
+    line-height: 22px;
+  
+    color: #8c8c8c;
+  
+    margin: 0;
+  }
+  
+  #container a {
+    text-decoration: none;
+  }
+  .claim{
+    margin-left: 10%;
+    color:darkblue;
+  }
+  
+  .flex-center{
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    height: 100%;
+  }
+
+  .text_field{  
+    // border-radius: 0px;
+    // border: 0px;
+    // border: 1px solid #FFFFFF;
+    border: none !important;  
+    // padding: 10 px;  
+  }
+  .label{
+    padding-left: 20px;
+    color: black;
+  }
+
+  .input{
+    width: -webkit-fill-available;
+    border: 1px solid #fad7d7;
+    border-radius: 8px;
+    padding-left: 5px;
+    margin-left: 10px ;
+    margin-right: 10px;
+  }
+  
+
+  .document{
+    width: -webkit-fill-available;  
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 6%;
+    border: 1px solid #fad7d7;
+    border-radius: 8px;
+    padding-left: 5px;
+  }
+
+
+  .card{
+    margin: 15px;
+    padding: 5px;
+  }
+
+  .sNo{
+    padding: 10px;
+    margin: 10px;
+  }
+
+  .span_style{
+    padding-right:12px;
+    color: #0a0101;
+}
+
+.red-circle {
+    width: 12px;
+    height: 12px;
+    background-color: red;
+    border-radius: 50%;
+   }
+   
+   .line_view {
+    width: 2px;
+    // height: 12px;
+    background-color: #ccc;
+   }
+   
+.circle-bar-container{
+    margin-right: 16rem;
+}
+  
+
+input{
+  --tw-ring-color: orange !important;
+  //  border-color: #ffffff!important;
+}
+
+
+textarea{
+  --tw-ring-color: orange !important;
+}
+
+
+ion-input{
+  --tw-ring-color: #ffffff!important;
+   border-color: #ffffff!important;
+  
+}
+
+  
+//   .active{
+//       background-color:#ffa500;
+//   }
+
+.circles{
+    height: 1.5em;
+    width: 1.5em;
+    // border: 0.3em solid #F4DADF;
+    // background-color:#E82646;
+    // border-radius: 50%;
+    display: block;
+    margin: auto;
+}
+
+.circle-desc-active{
+ font-weight: bold;
+}
+.bar{
+    width: 16%;
+    height: 6.00em;
+    margin-bottom:20em; // increased from 0.469em
+    border: 0.031em solid #F4DADF;
+    color:#F4DADF;
+    background-color:#F4DADF;
+    display: block;
+    margin: auto;
+}
+
+$circle-text-margin-top: -20px;
+
+.circle-text {
+    position: absolute;
+    left: 25%;
+    margin-top: $circle-text-margin-top;
+    font-weight: 600;
+}
+
+.container{
+    // min-width:320px;
+    margin: "0px auto";
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.circle-desc{
+   position: absolute;
+   top:5.000em;
+   font-size: 1.125em;
+   width: auto;
+   max-width:9.375em;
+   margin-left:-0.750em;
+}
+.tool_bar{
+    padding: 8px; 
+}
+.content_st{
+    --padding-bottom: 20px;//common code put in common.css
+    
+}
+
+
+.order_default_font{
+    font-size: 16px;
+}
+
+.arrow_icon{
+    color: white;margin-left: 8px;
+}
+
+.bt_sty{
+    display: flex;flex-direction: row;
+}
+
+.back_icon{ //common code put in common.css
+    width: 20px;height: 20px;
+}
+
+.light_font{
+    color: rgba(172,172,172,1); 
+       
+}
+
+.auto_size_bt{
+    width: -webkit-fill-available;justify-content: center;display: flex;
+}
+
+
+.span_s{
+  margin-left: 60px;
+}
+
+.semi_colon{
+  margin-right: 5px;
+  color: #0a0101;
+}
+.select{
+  max-width: 7rem;
+}
+
+ion-fab-button {
+  --background: orange;
+  --background-activated: orange;
+  --background-hover: orange;
+  --border-radius: 15px;
+  --box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.3), 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+  --color: black;
+}
+
+.view{
+  border: 1px solid orange;
+  border-radius: 15px;
+  display: flex; 
+  justify-content: center;
+  margin-left: 10%;
+  margin-right: 10%;
+  width: -webkit-fill-available;  
+  color: black;
+  --background-activated: none;
+  margin-top: 5%;
+  
+}
+
+
+.img {
+  background-color: #b5f6ee;
+  border: solid 1px #fabb4f;
+  color: #0b0a0a;
+  text-align: center;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Three columns with equal width */
+  gap: 10px; /* Gap between cards */
+}
+
+.back-ground{
+  border: 1px solid orange !important;
+}
+
+.inp{
+  --inner-border-width: 0 !important;
+  border-style: unset !important;
+}
+
+ion-input{
+  --tw-ring-color: #ffffff!important;
+   border-color: #ffffff!important;
+}
+
+.date-input-container {
+  position: relative;
+}
+
+.date-icon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 10px;
+  color: #aaa; /* Adjust color as needed */
+}
+
+.input-with-icon {
+  padding-left: 30px; /* Adjust padding to make space for the icon */
+}
+
+
+
+// style="max-width: 100%; border: 1px solid #fad7d7; border-radius: 5px; padding: 5px;   --tw-ring-color: orange !important; " 
+.text_area{
+  border: 1px solid #fad7d7;
+  border-radius: 8px;
+  padding: 5px;
+  --tw-ring-color: orange !important;
+  width: -webkit-fill-available;
+}
+
+
+
+  
+//   @media only screen and (max-width: 320px){
+//      body {
+//        font-size:20%
+//     }
+//   } 
+  
+//   /*extra small devices*/
+//   @media only screen and (max-width: 600px){
+//      body {
+//        font-size:40%
+//     }
+//   } 
+  
+//   /* Small devices (portrait tablets and large phones, 600px and up) */
+//   @media only screen and (min-width: 600px) {
+//      body {
+//        font-size:60%
+//     }
+//   } 
+  
+//   /* Medium devices (landscape tablets, 768px and up) */
+//   @media only screen and (min-width: 768px) {
+//     body {
+//        font-size:80%
+//     }
+//   } 
+  
+//   /* Large devices (laptops/desktops, 992px and up) */
+//   @media only screen and (min-width: 992px) {
+//     body {
+//        font-size:100%
+//     }
+//   } 
+  
+//   /* Extra large devices (large laptops and desktops, 1200px and up) */
+//   @media only screen and (min-width: 1200px) {
+//      body {
+//        font-size:120%
+//     }
+//   }
+  
+.custom-item {
+  color: white;
+  background-color: white;
+}
+
+.custom-input {
+  background-color: #ffffff;
+  color: black; /* Input text color */
+  border: none; /* Remove default border */
+  border-radius: 5px; /* Optional: Add border radius */
+}
+
+.custom-icon {
+  color: black; /* Calendar icon color */
+  cursor: pointer; /* Change cursor to pointer on hover */
+}
+
+  

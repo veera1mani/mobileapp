@@ -1,0 +1,198 @@
+/* for setting sie of months starting from may */
+.custom-segment-button {
+    font-size: 10px;
+    padding: 0px;
+  }
+  
+  /* for 4 cards*/
+  .card {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .cardbox {
+  
+    display: flex;
+    flex-direction: column;
+    width: 8rem;
+    fill: rgba(255, 255, 255, 1);
+  }
+  
+  .header-label {
+    min-width: 100px;
+    white-space: nowrap;
+  }
+  
+  .labels-row,
+  .data-row {
+    margin-bottom: 5px;
+  }
+  
+  .labels-row ion-col {
+    padding-right: 10px;
+  }
+  
+  .custom-grid {
+    row-gap: 5px;
+  }
+  
+  /* Style for the "performance-deadline" div */
+  @media only screen and (max-width: 90px) {
+  
+    .labels-row,
+    .data-row {
+      display: block;
+      border-bottom: none;
+    }
+  }
+  
+  /* Style for the ion-segment */
+  ion-segment {
+    background-color: hwb(0 100% 0%);
+    color: aliceblue;
+    --border-radius: 20px;
+    margin: 10px;
+  }
+  
+  ion-segment-button.custom-segment-button {
+    background-color: rgb(224, 218, 218);
+    color: rgb(255, 255, 255);
+    width: 200px;
+  }
+  
+  
+  /* Style for the square card (reducing  gap between 4 cards and user-cards */
+  
+  @media (max-width: 367px) {
+    .rectangle-card {
+      margin-top: 50px;
+    }
+  }
+  
+  .users-card {
+    height: 240px;
+    width: 300px;
+    overflow: hidden;
+    margin-left: 38px;
+    margin-right: 15px;
+    margin-top: 32px;
+    border-color: white ;
+    
+  }
+  
+  /* Reducing the gap between segment  and users-cards */
+  ion-card {
+    border: 1px solid rgb(64, 100, 136);
+    margin-top: 25px;
+    -webkit-text-fill-color: rgb(6, 49, 78);
+  }
+  
+  
+  /* fab button round */
+  .labels-now ion-card-header ion-fab-button {
+    font-size: 12px !important;
+    padding: 6px 6px !important;
+    -webkit-text-fill-color: aliceblue;
+    margin-top: -55%;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: -14px;
+    border-radius: 80%;
+    text-align: center;
+  }
+  
+  
+  /* label header names for user-cards table */
+  .header-label,
+  .data-row ion-col {
+    font-size: 5px;
+    text-align: center;
+  }
+  
+  .card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+  .cardbox {
+    width: 100%;
+    /* Setting the width of the card  100% for mobile view */
+    max-width: 140px;
+    margin-bottom: -22px;
+  
+  }
+  
+  /* Adding media query for smaller screens */
+  @media (min-width: 576px) {
+    .card-container {
+      justify-content: space-between;
+      gap: 10px;
+  
+    }
+  }
+  
+  /* Buttons for months */
+  .months {
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+  }
+  
+  .btn {
+    border: 1px solid #1341da;
+    border-radius: 10%;
+    color: black;
+  }
+  
+  .clicked-button {
+    background-color: #007bff;
+  
+  }
+  
+  .i {
+    height: 10%;
+    justify-content: center;
+    margin-top: 0.5rem;
+    display: flex;
+    flex-direction: row;
+    margin-right: 2rem;
+    position: relative;
+  }
+  
+  .btn1 {
+    width: 40%;
+    align-content: center;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+    color: white;
+    background-color: orange;
+    border-radius: 18px;
+  }
+  
+  .btn2 {
+    width: 30%;
+    right: 0;
+    height: 100%;
+    margin-right: 1rem;
+    z-index: 1;
+    background-color: #e7e2e2;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    border-top-right-radius: 18px;
+    border-bottom-right-radius: 18px;
+    color: white;
+    font-weight: 700;
+    position: absolute;
+  }
+  
+  .cardbox{
+    border-radius: 10px;
+    width: 1000px;
+    
+  }

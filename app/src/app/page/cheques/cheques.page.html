@@ -1,0 +1,158 @@
+<div>
+  <ion-row class="background padding_st">
+    <ion-card class="back_bg">
+      <ion-icon class="icon_size" name="chevron-back-outline" (click)="backNav()"></ion-icon>
+    </ion-card>
+    <ion-text class="toolbar_text">Cheques</ion-text>
+  </ion-row>
+  <ion-row size="12" class="background top_searchbar">
+    <ion-col>
+      <ion-searchbar        
+        placeholder="Search cheque number"
+        class="search_bar"
+        [debounce]="100"
+        (ionInput)="onSearch($event)"
+      ></ion-searchbar>
+    </ion-col>
+    <!-- <div class="filter" id="popover-button">
+      <ion-icon name="options-outline" class="filter_size"></ion-icon>
+      <ion-popover mode="ios" trigger="popover-button" [dismissOnSelect]="true">
+        <ng-template>
+          <ion-content>
+            <ion-list>
+              <ion-item
+                [button]="true"
+                [detail]="false"
+                (click)="filterOrders('All')"
+                >All Cheques</ion-item
+              >
+              <ion-item
+                [button]="true"
+                [detail]="false"
+                (click)="filterOrders('INWARD')"
+                >Inward</ion-item
+              >
+              <ion-item
+                [button]="true"
+                [detail]="false"
+                (click)="filterOrders('OUTWARD')"
+                >Outward</ion-item
+              >
+              <ion-item
+                [button]="true"
+                [detail]="false"
+                (click)="filterOrders('SECURITY')"
+                >Security</ion-item
+              >
+            </ion-list>
+          </ion-content>
+        </ng-template>
+      </ion-popover>
+    </div> -->
+    <ion-button class="butn" (click)="search()" >
+      <ion-icon name="search-outline" ></ion-icon>      
+    </ion-button>
+  </ion-row>
+  <!-- <ion-progress-bar *ngIf="!dataFetched" type="indeterminate"></ion-progress-bar> -->
+</div>
+<ion-content class="background full_view">
+
+  <div *ngIf="searchTerm">
+    <ion-card class="card_style" style="line-height: 34px;" *ngFor="let item of chequeList" >
+      <ion-row size="12">
+        <ion-col size="6">
+          <ion-text class="toolbar_text order_default_font" >Cheque Number</ion-text>
+        </ion-col>
+        <ion-col>
+          <ion-text class="light_font"><span class="span_style">:</span>{{item?.chequeNumber}}</ion-text>
+        </ion-col>
+      </ion-row>
+  
+      <ion-row size="12">
+        <ion-col size="6">
+          <ion-text class="toolbar_text order_default_font" >status</ion-text>
+        </ion-col>
+        <ion-col>
+          <ion-text class="light_font"><span class="span_style">:</span>{{item?.status}}</ion-text>
+        </ion-col>
+      </ion-row>
+  
+      <ion-row size="12">
+        <ion-col size="6">
+          <ion-text class="toolbar_text order_default_font">Received Via</ion-text>
+        </ion-col>
+        <ion-col>
+          <ion-text class="light_font"><span class="span_style">:</span>{{item?.recivedVia}}</ion-text>
+        </ion-col>
+      </ion-row>
+  
+      <ion-row size="12">
+        <ion-col size="6">
+          <ion-text class="toolbar_text order_default_font">Bank Name</ion-text>
+        </ion-col>
+        <ion-col>
+          <ion-text class="light_font"><span class="span_style">:</span>{{item?.bankName}}</ion-text>
+        </ion-col>
+      </ion-row>
+  
+      
+    </ion-card>
+  </div>
+
+  <div *ngIf="!searchTerm" class="empty">
+    <ion-icon name="trash-outline"></ion-icon>    
+    <ion-text>No Cheque Found</ion-text>
+  </div>
+
+  <!-- <ion-card *ngFor="let item of filteredOrderList" class="card_style">
+    <div class="flex_col">
+      <ion-row class="card_align">
+        <ion-text class="toolbar_text font_style" style="margin-left: 0px">
+          {{'Cheque ID : '+item?.chequeId}}
+        </ion-text>       
+      </ion-row>
+      <ion-row style="margin-top: 8px">
+        <ion-col size="4.5" class="col_details">
+          <ion-text>Cheque No</ion-text>
+          <ion-text>:</ion-text>
+        </ion-col>
+        <ion-col>
+          <ion-text>{{item?.chequeNumber}}</ion-text>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="4.5" class="col_details">
+          <ion-text>Bank Name</ion-text>  
+          <ion-text>:</ion-text>
+        </ion-col>
+        <ion-col>
+          <ion-text>{{item?.bankName}}</ion-text>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="4.5" class="col_details">
+          <ion-text>Stockist Name</ion-text>  
+          <ion-text>:</ion-text>
+        </ion-col>
+        <ion-col>
+          <ion-text>{{item.stockistId}}</ion-text>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="view_outlet">
+        <div
+          class="order_Style button_bg"
+          style="color: rgba(245, 123, 32, 1); background: #fde2ce">
+          <ion-text class="view_det_color" (click)="chequeDetail(item?.chequeNumber)">View Details</ion-text>
+          <ion-icon name="chevron-forward-outline" color="green"></ion-icon>
+        </div>
+        <div
+          class="order_Style"
+          [ngStyle]="{'background' : item?.status==='Delivered' ? '#CF142B' :item?.status==='Shipped'? '#52A811':'#afaf37'}" >
+          
+          <ion-text style="color: white">{{item?.status}}</ion-text>  
+        </div>
+      </ion-row>
+    </div>
+  </ion-card> -->
+</ion-content>

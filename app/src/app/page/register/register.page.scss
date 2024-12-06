@@ -1,0 +1,25 @@
+.view_bt_st{
+    --background-activated: none; 
+    --background: #FFCD11;
+    color: black;
+    font-weight: bold;
+    text-transform: none;
+    font-size: medium;
+    width: -webkit-fill-available;  
+    height: 50px;
+    // margin-left: 10%;
+    // margin-right: 10%;
+}
+
+.box-shade{
+    filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.1));
+}
+
+.have_pin{
+    color: rgb(13, 157, 247);
+}
+
+
+ion-footer{
+    -webkit-box-shadow:none !important;   
+}

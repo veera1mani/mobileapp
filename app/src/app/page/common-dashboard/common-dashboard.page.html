@@ -1,0 +1,94 @@
+
+
+<ion-tabs *ngIf="userRole === 'MANAGER'">
+    <ion-tab-bar slot="bottom" >
+    <ion-tab-button (click)="onTabChange('home')" [class.selected]="selectedTab === 'home'" tab="home" >
+      <div  class="flow_view">
+        <ion-icon class="icon_size" name="home-outline"></ion-icon>
+        Home
+      </div>
+    </ion-tab-button>
+    <ion-tab-button (click)="onTabChange('orders')" [class.selected]="selectedTab === 'orders'" tab="orders" >
+      <div  class="flow_view">
+        <ion-icon class="icon_size"  src="assets/order-svg.svg" ></ion-icon>
+      Orders
+    </div>
+  </ion-tab-button>
+    <ion-tab-button (click)="onTabChange('returns')" [class.selected]="selectedTab === 'returns'" tab="returns" >
+      <div  class="flow_view">
+        <ion-icon class="icon_size" src="assets/Return-svg.svg" ></ion-icon>
+      Returns
+    </div>
+  </ion-tab-button>
+   <!--  <ion-tab-button (click)="onTabChange('cheques')" [class.selected]="selectedTab === 'cheques'" tab="cheques">
+      <div  class="flow_view">
+        <ion-icon class="icon_size" src="assets/Cheque.svg" ></ion-icon>
+      Cheques
+    </div>
+  </ion-tab-button> -->
+  </ion-tab-bar>   
+</ion-tabs>
+
+<ion-tabs *ngIf="userRole === 'USER'">
+  <ion-tab-bar slot="bottom" >
+  <ion-tab-button (click)="onTabChange('home')" [class.selected]="selectedTab === 'home'" tab="user-home" href="/common-dashboard/user-home">
+    <div  class="flow_view">
+      <ion-icon class="icon_size" name="home-outline"></ion-icon>
+      Home
+    </div>
+  </ion-tab-button>
+  <ion-tab-button *ngIf="user.userAppType === 'ORDER' || user.userAppType === 'BOTH'" (click)="onTabChange('orders')" [class.selected]="selectedTab === 'orders'" tab="orders" href="/common-dashboard/tickets-bottom-navigation">
+    <div  class="flow_view">
+      <ion-icon class="icon_size" src="assets/order-svg.svg"></ion-icon>
+    Orders
+  </div>
+  </ion-tab-button> 
+  <ion-tab-button *ngIf="user.userAppType === 'RETURNS' || user.userAppType === 'BOTH' " (click)="onTabChange('returns')" [class.selected]="selectedTab === 'returns'" tab="returns" href="/common-dashboard/tickets-bottom-navigation">
+    <div  class="flow_view">
+      <ion-icon class="icon_size" src="assets/Return-svg.svg"></ion-icon>
+    Returns
+  </div>
+  </ion-tab-button>
+  </ion-tab-bar>   
+</ion-tabs>
+
+<ion-tabs *ngIf="userRole === 'SUPERADMIN'">
+  <ion-tab-bar slot="bottom" > 
+  <ion-tab-button (click)="onTabChange('o-orders')" [class.selected]="selectedTab === 'o-orders'" tab="o-orders" href="/common-dashboard/owner-orders">
+    <div  class="flow_view">
+      <ion-icon class="icon_size" src="assets/order-svg.svg"></ion-icon>
+    Orders
+  </div>
+</ion-tab-button>
+  <ion-tab-button (click)="onTabChange('o-tickets')" [class.selected]="selectedTab === 'o-tickets'" tab="o-tickets" href="/common-dashboard/owner-tickets">
+    <div  class="flow_view">
+      <ion-icon class="icon_size" src="assets/Ticket.svg"></ion-icon>
+    Tickets
+  </div>
+</ion-tab-button>
+  <ion-tab-button (click)="onTabChange('o-dispatch')" [class.selected]="selectedTab === 'o-dispatch'" tab="o-dispatch" href="/common-dashboard/owner-dispatch">
+    <div  class="flow_view">
+      <ion-icon class="icon_size" name="cash-outline"></ion-icon>
+    Dispatch
+  </div>
+</ion-tab-button> 
+</ion-tab-bar>  
+</ion-tabs>
+
+<ion-tabs *ngIf="userRole === 'TRANSPORT'">
+  <ion-tab-bar slot="bottom" > 
+  <ion-tab-button (click)="onTabChange('home')" [class.selected]="selectedTab === 'home'" tab="transporter" href="/common-dashboard/transporter">
+    <div  class="flow_view">
+      <ion-icon class="icon_size" name="home-outline"></ion-icon>
+    Home
+  </div>
+</ion-tab-button>
+  <!-- <ion-tab-button (click)="onTabChange('orders')" [class.selected]="selectedTab === 'orders'" tab="orders" href="/common-dashboard/orders">
+    <div  class="flow_view">
+      <ion-icon class="icon_size" src="assets/order-svg.svg"></ion-icon>
+    Orders
+  </div>
+</ion-tab-button> -->
+  
+</ion-tab-bar>  
+</ion-tabs>

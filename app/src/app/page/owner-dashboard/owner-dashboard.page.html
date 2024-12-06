@@ -1,0 +1,23 @@
+<ion-tabs>
+  <ion-tab-bar slot="bottom" > 
+  <ion-tab-button (click)="onTabChange('orders')" [class.selected]="selectedTab === 'orders'" tab="orders" href="/common-dashboard/tickets-bottom-navigation">
+    <div  class="flow_view">
+      <ion-icon class="icon_size" src="assets/order-svg.svg"></ion-icon>
+    Orders
+  </div>
+</ion-tab-button>
+  <ion-tab-button (click)="onTabChange('tickets')" [class.selected]="selectedTab === 'tickets'" tab="tickets" href="/common-dashboard/orders-bottom-navigation">
+    <div  class="flow_view">
+      <ion-icon class="icon_size" src="assets/Ticket.svg"></ion-icon>
+    Tickets
+  </div>
+</ion-tab-button>
+  <ion-tab-button (click)="onTabChange('dispatch')" [class.selected]="selectedTab === 'dispatch'" tab="dispatch" href="/common-dashboard/returns-bottom-navigation">
+    <div  class="flow_view">
+      <ion-icon class="icon_size" name="cash-outline"></ion-icon>
+    Dispatch
+  </div>
+</ion-tab-button>
+ 
+</ion-tab-bar>  
+</ion-tabs>

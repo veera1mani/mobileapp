@@ -1,0 +1,80 @@
+
+  ion-content{
+    --ion-background-color:"#F6F6F6"
+  }
+  .padding_st{
+    padding: 8px;padding-top: 18px;padding-bottom: 12px;
+  }
+
+  .icon_size{
+    width: 20px;height: 20px;
+  }
+.top_searchbar{
+  padding-left: 8px;padding-right: 8px;
+}
+.filter_size{
+  height: 30px;width: 30px;
+}
+
+  .search_bar{
+    min-height: 0px;
+    height: 40px;
+    border-radius: 10px;
+  }
+
+  .font_style{
+    background-color: #DFDFDF;
+    padding-left: 8px;
+    padding-right:8px;
+    font-size: 13px;
+  }
+
+ .card_align {
+    justify-content: space-between;
+  }
+
+  // .view_det_color{
+  //   color: rgba(245,123,32,1);
+  // }
+
+  .view_outlet{
+    display: flex;justify-content: space-between;margin-top: 8px;
+  }
+
+  // .order_Style{
+  //   background: #52A811;padding: 2px;padding-left: 6px;padding-right: 6px;border-radius: 4px;
+  // }
+
+  .full_view{
+    --padding-top: 20px;
+  }
+
+.filter{
+    background-color: #DFDFDF;
+    width: 48px;
+    height: 40px;
+    margin-top: 6px;
+    margin-bottom: 6px;
+    margin-left: -10px;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+}
+
+.flex_col{
+    display: flex;
+    flex-direction: column;
+    ion-text{
+        .span_align{
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+    }
+}
+
+.col_details{
+    display: flex;
+    justify-content: space-between;
+    padding: 0px;
+}

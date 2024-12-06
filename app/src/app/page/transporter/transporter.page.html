@@ -1,0 +1,122 @@
+<app-dashboard-header></app-dashboard-header>
+
+<ion-content class="ion-no-padding">
+  <div class="ion-no-padding justify-start mx-4 mt-4">
+    <!-- Welcome Div -->
+    <div class="mt-2">
+      <p class="text-gray-500 font-light text-lg">Welcome</p>
+      <h1 class="text-gray-800 font-bold text-2xl">{{name}}</h1>
+    </div>
+    <br />
+    <!-- Scanner Div -->
+    <!-- <div>
+      <div class="flex justify-around items-center">
+        <div
+          class="relative border border-blue-800 shadow-md rounded-lg w-60 h-16 "
+          style="height: 5rem; width: 6rem !important; margin-right: 5px;"
+        >
+          <img
+            src="assets/Delivery truck.svg"
+            alt=""
+            class="w-17 h-19 ml-15"
+            style="height: 60px; width: 80px; "
+          />
+          <p class="blue-800 -mt-2 mx-auto font-bold flex justify-center">
+            Assigned
+          </p>
+          <ion-badge
+            class="bg-gradient-to-r from-blue-800 to-blue-500 text-white absolute -mt-2 -mr-2 w-10 h-10 rounded-full flex justify-center items-center z-10"
+            style="top: -10px; left: -10px; right: 12px"
+          >
+         0
+          </ion-badge>
+        </div>
+
+        <div
+          class="relative border border-blue-800 shadow-md rounded-lg w-60 h-16"
+          style="height: 5rem; width: 7rem !important; margin-right: 5px;"
+        >
+          <img
+            src="assets/Delivery truck.svg"
+            alt=""
+            class="w-17 h-19 ml-15"
+            style="height: 60px; width: 80px; margin-left: auto; margin-right: auto;"
+          />
+          <p class="blue-800 -mt-2 mx-auto font-bold flex justify-center">
+            Delivered
+          </p>
+          <ion-badge
+            class="bg-gradient-to-r from-blue-800 to-blue-500 text-white absolute -mt-2 -mr-2 w-10 h-10 rounded-full flex justify-center items-center z-10"
+            style="top: -10px; left: -10px; right: 12px"
+          >
+          0
+          </ion-badge>
+        </div>
+
+        <div
+          class="relative border border-blue-800 shadow-md rounded-md w-30 h-16"
+          style="height: 5rem"
+        >
+          <img
+            src="assets/Delivery truck.svg"
+            alt=""
+            class="w-17 h-19 ml-15"
+            style="height: 60px; width: 80px"
+          />
+          <p class="blue-800 -mt-2 mx-auto font-bold flex justify-center">
+            Pending
+          </p>
+          <ion-badge
+            class="bg-gradient-to-r from-blue-800 to-blue-500 text-white absolute -mt-2 -mr-2 w-10 h-10 rounded-full flex justify-center items-center z-10"
+            style="top: -10px; left: -10px; right: 12px"
+          >
+           0
+          </ion-badge>
+        </div>
+      </div>
+    </div> -->
+    <div class="flex items-center justify-center mt-4 scanbtn">
+      <button
+        class="bg-white text-orange-500 border border-solid border-orange-500 rounded-md w-60 h-10"
+        (click)="scanBarcode()"
+      >
+        Scan With QR
+      </button>
+     
+    </div>
+
+    <!-- Activities Div -->
+    <!-- <div class="mt-4 bg-white rounded-3xl shadow-md mb-8 box-shade cardcorner"> -->
+      <!-- <div class="p-4 border-b-2 border-gray-300 border-b-gray-500">
+        <p>Recent Orders</p>
+      </div> -->
+      <!-- <div> -->
+        <!-- <div class="flex p-4" *ngFor="let item of recentActivity">
+          <img src="" alt="" class="mr-2" />
+          <div class="ml-2">
+            <h4 class="text-lg font-semibold font-system-ui">{{item?.subject}}</h4>
+            <p class="text-gray-500">{{item?.type}}  {{(item?.status).toLowerCase()}} Successfully</p>
+          </div>
+          <div class="ml-auto flex items-center">
+            <img src="" alt="" class="mr-2" />
+            <p></p>
+          </div>
+        </div> -->
+
+
+
+        <!-- <div class="flex p-4">
+          <img src="assets/icon/icons8-discord-48.png" alt="" class="mr-2" />
+          <div class="ml-2">
+            <h4 class="text-lg font-semibold font-system-ui">Orders</h4>
+            <p class="text-gray-500">Recently Added Ticket</p>
+          </div>
+          <div class="ml-auto flex items-center">
+            <img src="" alt="" class="mr-2" />
+            <p>08.00am</p>
+          </div>
+        </div> -->
+      <!-- </div> -->
+    <!-- </div> -->
+  </div>
+</ion-content>

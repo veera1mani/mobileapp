@@ -1,0 +1,57 @@
+  ion-tab-button {
+    position: relative;
+    --ripple-color:none;
+    &.selected {
+       --color: #fff;
+       color: white;
+       ion-icon{
+        align-self: center;
+         color: white;
+       }
+       ::ng-deep div {
+        justify-content: center;
+        background-color: #F47B21;
+        color: #ffffff;
+        display: flex;
+        flex-direction: column;
+        border-radius: 65px;
+        width: 55px;
+        height: 60px;
+        animation: blink 1s 1 forwards;
+      }
+    }
+    ion-icon{
+      align-self: center;
+      display: flex;
+    }
+
+   }
+
+ion-tab-bar{
+    padding-top: 8px;
+    box-shadow:0px 15px 25px rgba(0, 0, 0, 2);
+    padding-bottom: 8px;
+    border-top-left-radius: 26px;
+    border-top-right-radius: 26px;
+}
+
+  @keyframes blink {
+    0% {
+      opacity: 0;
+   }
+    50% {
+      opacity: 0.5;
+   }
+    100% {
+      opacity: 1;
+   }
+  }
+   .icon_size{
+    width: 28px;height: 28px;
+    align-self: center;
+   }
+
+
+   .flow_view{
+    display: flex;flex-direction: column;
+   }

@@ -1,0 +1,255 @@
+<app-dashboard-header></app-dashboard-header>
+
+
+  <ion-row  class="d-flex justify-start pl-4 mt-4">
+    <ion-text class="font-medium text-lg text-gray-500">Welcome</ion-text>
+  </ion-row> 
+  
+  <ion-row class="d-flex justify-start pl-4">
+    <ion-text class="font-bold text-xl">{{user?.firstName}}</ion-text>
+  </ion-row>
+
+  <ion-card class="card" *ngIf="!visitor">
+    <ion-grid>
+      <ion-row size="12"> 
+        <ion-col size="12">
+          <ion-text class="font-medium  text-lg ml-4">Mobile Number :</ion-text>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="8">
+          <input type="number" class="input" placeholder="Please enter Mobile Number" 
+           (input)="validateInput($event)">
+        </ion-col>
+        <ion-col size="4">
+          <ion-button class="butn" [disabled]="mobileNumber.length != 10 " (click)="getVisitor()">check</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>  
+  <div *ngIf="!visitor"> 
+    <ion-card class="card background" *ngFor="let v of allVisitors" (click)="getVisitor(v.phone)">
+      <ion-grid>
+        <ion-row>
+          <ion-col size="6">
+            <img src="{{v.photoURL ? v.photoURL : '../../../../../assets/icon/no-profile-icon.svg' }}" alt='' class="circular-image" >
+          </ion-col>
+          <ion-col size="6">
+            <ion-text>{{v.name}}</ion-text><br>
+            <ion-text>{{v.phone}}</ion-text><br>
+            <ion-text *ngIf="v.inTime">In time : {{v?.inTime | date:"hh:mm:ss a" }}</ion-text>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card>
+  </div> 
+    
+  <ion-card class="card bg-orange-100" *ngIf="visitor">        
+    <form [formGroup]="vistiorForm">  
+      <ion-row  class="d-flex justify-center p-2">
+        <ion-text *ngIf="!newVisitor" class="font-bold text-xl">Welcome</ion-text>
+        <ion-text *ngIf="newVisitor" class="font-bold text-xl">New Visitor</ion-text>
+      </ion-row> 
+      <ion-row *ngIf="!newVisitor && photo" class="d-flex justify-center">
+        <img [src]="photo ? photo : '../../../../../assets/icon/no-profile-icon.svg' "  
+        class="circular-image" alt="image">
+      </ion-row>   
+      <ion-grid>
+        <ion-row>
+          <ion-col size="12">
+            <ion-text class="font-medium  text-lg ml-4">* Name :</ion-text>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="12">
+            <input type="text" formControlName="name" class="input" placeholder="Enter your name">
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <p class="error-text mb-0 ml-4 text-red-500" 
+            *ngIf="submitFlag && !vistiorForm.get('name')?.value " >
+            * This field is required
+          </p>
+        </ion-row>
+      </ion-grid>
+      
+      <ion-grid>
+        <ion-row>
+          <ion-col size="12">
+            <ion-text class="font-medium  text-lg ml-4">* Mobile Number :</ion-text>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="12">
+            <input type="number" formControlName="phone" class="input" placeholder="Enter your mobile number"
+            (input)="validateInput($event)">
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <p class="error-text mb-0 ml-4 text-red-500" 
+            *ngIf="submitFlag && !vistiorForm.get('phone')?.value " >
+            * This field is required
+          </p>
+        </ion-row>
+      </ion-grid>
+
+      <ion-grid *ngIf="newVisitor">
+        <ion-row>
+          <ion-col size="12">
+            <ion-text class="font-medium  text-lg ml-4">Email id :</ion-text>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="12">
+            <input type="email" formControlName="emailId" class="input"
+             placeholder="Enter your email" >
+
+             <div *ngIf="emailId?.invalid && emailId?.errors?.['email'] && emailId?.value && (emailId?.dirty || emailId?.touched)"
+              class="error-text ml-4 text-red-500">
+              <span>* Please enter valid email </span>
+            </div>
+          </ion-col>
+        </ion-row>  
+        <ion-row>
+          <p class="error-text mb-0 ml-4 text-red-500" 
+            *ngIf="submitFlag && !vistiorForm.get('emailId')?.value " >
+            * This field is required
+          </p>
+        </ion-row>      
+      </ion-grid>
+
+      <ion-grid *ngIf="newVisitor">
+        <ion-row>
+          <ion-col size="12">
+            <ion-text class="font-medium  text-lg ml-4">Company :</ion-text>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="12">
+            <input type="text" formControlName="company" class="input" placeholder="Enter your Company Name">
+          </ion-col>
+        </ion-row> 
+        <ion-row>
+          <p class="error-text mb-0 ml-4 text-red-500" 
+            *ngIf="submitFlag && !vistiorForm.get('company')?.value " >
+            * This field is required
+          </p>
+        </ion-row>      
+      </ion-grid>
+
+      <ion-grid *ngIf="newVisitor">
+        <ion-row>
+          <ion-col size="12">
+            <ion-text class="font-medium  text-lg ml-4">Location :</ion-text>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="12">
+            <textarea type="text" formControlName="location" class="input" placeholder="Enter your Address"></textarea>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <p class="error-text mb-0 ml-4 text-red-500" style="margin-top: -20px;"
+            *ngIf="submitFlag && !vistiorForm.get('location')?.value " >
+            * This field is required
+          </p>
+        </ion-row>
+      </ion-grid> 
+
+      <ion-grid *ngIf="!newVisitor && vistiorForm.value.inTime">
+        <ion-row>
+          <ion-col size="12">
+            <ion-text class="font-medium  text-lg ml-4">In Time :</ion-text>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="12">
+            <input type="text" value="{{ vistiorForm.value?.inTime | date: 'dd-MM-yyyy hh:mm:ss a' }}" class="input" disabled> 
+          </ion-col>
+        </ion-row>
+      </ion-grid>  
+
+      <ion-grid *ngIf="!newVisitor && vistiorForm.value.outTime">
+        <ion-row>
+          <ion-col size="12">
+            <ion-text class="font-medium  text-lg ml-4">Out Time :</ion-text>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="12">
+            <input type="text" value="{{ vistiorForm.value?.outTime | date: 'dd-MM-yyyy hh:mm:ss a' }}" class="input" disabled> 
+          </ion-col>
+        </ion-row>
+      </ion-grid> 
+
+      <ion-grid *ngIf="newVisitor">
+        <ion-row>
+          <ion-col size="12">
+            <ion-text class="font-medium  text-lg ml-4">Meeting Person :</ion-text>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="12">
+            <input type="text" class="input" formControlName="meetTo" placeholder="Enter the person name here" > 
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <p class="error-text mb-0 ml-4 text-red-500" 
+            *ngIf="submitFlag && !vistiorForm.get('meetTo')?.value " >
+            * This field is required
+          </p>
+        </ion-row>
+      </ion-grid> 
+
+      <ion-grid *ngIf="newVisitor">
+        <ion-row>
+          <ion-col size="12">
+            <ion-text class="font-medium  text-lg ml-4">Purpose :</ion-text>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="12">
+            <textarea type="text"  formControlName="purpose" class="input" placeholder="Enter the reason"></textarea> 
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <p class="error-text mb-0 ml-4 text-red-500" style="margin-top: -20px;"
+            *ngIf="submitFlag && !vistiorForm.get('purpose')?.value " >
+            * This field is required
+          </p>
+        </ion-row>
+      </ion-grid>   
+
+    </form>
+
+    <ion-row *ngIf="newVisitor" class="d-flex justify-center align-center mb-4">         
+      <ion-button (click)="takePicture($event)" class="text-black back" >Upload Profile Photo
+        <ion-icon name="camera-outline" class="d-flex align-center ml-4  "></ion-icon>
+      </ion-button>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="6" *ngIf="image" class="image" > 
+        <img [src]="image"  class="circular-image">
+      </ion-col>
+      <ion-col size="6" *ngIf="image" class="ok-btn" >
+        <ion-button *ngIf="!imageSaved" (click)="saveImage()" class="text-black back" >OK</ion-button>
+        <img *ngIf="imageSaved" src="../../../assets/success.svg"  alt="Saved" >
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="d-flex justify-around mb-2">
+      <ion-button class="butn1" (click)="cancel()">cancel</ion-button>
+      <ion-button class="butn" *ngIf="newVisitor"  (click)="save()" >Save</ion-button>
+      <ion-button class="butn" *ngIf="!newVisitor && !vistiorForm.value.inTime || vistiorForm.value.outTime"  (click)="update('IN')" >Check In</ion-button>
+      <ion-button class="butn" *ngIf="!newVisitor && vistiorForm.value.inTime && !vistiorForm.value.outTime"  (click)="update('OUT')" >Check Out</ion-button>
+    </ion-row>
+
+  </ion-card>
+
+</ion-content>
+

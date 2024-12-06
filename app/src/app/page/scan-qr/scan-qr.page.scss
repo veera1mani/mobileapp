@@ -1,0 +1,30 @@
+.view_bt_st{
+    --background-activated: none; 
+    --background: #FFCD11;
+    color: black;
+    font-weight: bold;
+    text-transform: none;
+    font-size: medium;
+    width: -webkit-fill-available;  
+    height: 50px;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.have_pin{
+    color: rgb(13, 157, 247);
+}
+
+ion-title{
+    font-size: x-large;
+    font-weight: 600;
+}
+
+ion-footer{
+    -webkit-box-shadow:none !important;  
+}
+
+ion-content{
+    // --background: url("../../../assets/nwe1.jpg") no-repeat center center  ;
+    // background-size: cover !important;
+}

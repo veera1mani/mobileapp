@@ -1,0 +1,79 @@
+<ion-content [fullscreen]="true" >
+  <ion-toolbar  >
+    <ion-text class="title">Dispatch</ion-text>
+    <ion-buttons slot="end" size="small">
+      <ion-toggle [(ngModel)]="isMonthly" color="primary" checked="false" mode="ios">
+        <ion-label>{{ isMonthly ? 'Monthly' : 'Yearly' }}</ion-label>
+      </ion-toggle> 
+    </ion-buttons>
+  </ion-toolbar>
+  
+  
+  <div class="months" scroll-x="true"  style="max-width: fit-content; overflow-x:scroll;" *ngIf="isMonthly===true">    
+    <div *ngFor="let month of months" >
+      <ion-button [class.clicked-button]="month.fillcolor === true" size="small"  class="btn" fill="clear" (click)="selectedMonth(month)">{{month.name}}</ion-button>
+    </div>
+  </div>  
+
+  <div class="card">
+    <ion-card class="cardbox">
+      <ion-card-header>      
+        <ion-card-subtitle></ion-card-subtitle>
+      </ion-card-header>  
+      <ion-card-content class="text"> Dispatches </ion-card-content>
+      <ion-badge id="notifications-badge" color="danger" >
+        <h6 class="bdg">99</h6>
+      </ion-badge>
+    </ion-card>
+
+    <ion-card class="cardbox">
+      <ion-card-header>      
+        <ion-card-subtitle></ion-card-subtitle>
+      </ion-card-header>  
+      <ion-card-content class="text"> Cases </ion-card-content>
+      <ion-badge id="notifications-badge" color="danger" >
+        <h6 class="bdg">19</h6>
+      </ion-badge>
+    </ion-card>
+  </div> 
+  
+  <ion-card class="card_style" style="line-height: 34px;">
+    <ion-item class="label">      
+      <ion-text class="details" >Transport List</ion-text>
+    </ion-item>
+
+    <ion-grid>
+      <ion-row>
+        <ion-col  size="4" class="values">
+          <ion-text class="columnName">Transporter Name</ion-text>
+        </ion-col>
+        <ion-col  size="4" class="values">
+          <ion-text class="columnName"> No of dispatches</ion-text>
+        </ion-col>
+        <ion-col  size="4" class="values">
+          <ion-text class="columnName" >No of cases</ion-text>
+        </ion-col>        
+      </ion-row>
+
+      <ion-row *ngFor="let username of userNames">
+        <ion-col size="4" class="table">  
+          <ion-card class="icon">
+            <ion-text class="icons">{{username[0].toUpperCase()}}</ion-text>
+          </ion-card>
+          <ion-col class="iconName">                        
+            <ion-text >{{username}}</ion-text>
+            <ion-text class="subname">Parcel Service</ion-text>
+          </ion-col>         
+        </ion-col>
+        <ion-col size="4" class="values">
+          {{dispatches[userNames.indexOf(username)]}}
+        </ion-col>
+        <ion-col size="4" class="values">
+          {{cases[userNames.indexOf(username)]}}
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+  </ion-card>
+</ion-content>
+

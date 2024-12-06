@@ -1,0 +1,110 @@
+<ion-row  class="background tool_bar">
+  <ion-card class="back_bg" (click)="backNav()">
+    <ion-icon class="back_icon" name="chevron-back-outline"></ion-icon>
+  </ion-card>
+  <ion-text class="toolbar_text"></ion-text>
+</ion-row>
+
+<ion-content class="content_st">
+  <!-- <ion-card class="card_style" style="line-height: 34px;">
+    <ion-row size="12">
+      <ion-col size="6">
+        <ion-text class="toolbar_text order_default_font" >Stockist Id</ion-text>
+      </ion-col>
+      <ion-col>
+        <ion-text class="light_font"><span class="span_style">:</span>38471893</ion-text>
+      </ion-col>
+    </ion-row>
+
+    <ion-row size="12">
+      <ion-col size="6">
+        <ion-text class="toolbar_text order_default_font" >SAP ID</ion-text>
+      </ion-col>
+      <ion-col>
+        <ion-text class="light_font"><span class="span_style">:</span>Order</ion-text>
+      </ion-col>
+    </ion-row>
+
+    <ion-row size="12">
+      <ion-col size="6">
+        <ion-text class="toolbar_text order_default_font">Category</ion-text>
+      </ion-col>
+      <ion-col>
+        <ion-text class="light_font"><span class="span_style">:</span>kdadlkcajds</ion-text>
+      </ion-col>
+    </ion-row>
+
+    <ion-row size="12">
+      <ion-col size="6">
+        <ion-text class="toolbar_text order_default_font">Stockist Name</ion-text>
+      </ion-col>
+      <ion-col>
+        <ion-text class="light_font"><span class="span_style">:</span>Meshak</ion-text>
+      </ion-col>
+    </ion-row>
+
+    <ion-row size="12">
+      <ion-col size="6">
+        <ion-text class="toolbar_text order_default_font" >Manufacturer Name</ion-text>
+      </ion-col>
+      <ion-col>
+        <ion-text class="light_font"><span class="span_style">:</span>Vallalar Agencies</ion-text>
+      </ion-col>
+    </ion-row>
+
+    <ion-row size="12">
+      <ion-col size="6">
+        <ion-text class="toolbar_text order_default_font" >Cheques in hand</ion-text>
+      </ion-col>
+      <ion-col>
+        <ion-text class="light_font"><span class="span_style">:</span>Cuddalore</ion-text>
+      </ion-col>
+    </ion-row>
+  </ion-card> -->
+ 
+  <!-- <ion-button (click)="getPhoto()">Photo</ion-button> -->
+  
+  <!-- <input #file type="file" multiple (change)="onFileSelect($event)" /> -->
+  
+
+ 
+    <ion-button (click)=" takePicture($event)" style=" --background-activated: none; --background: rgb(235, 231, 231); color: black;">Document
+      <ion-icon name="camera-outline" style="color: 000000; display: flex; align-items: center;" ></ion-icon>
+      </ion-button>
+
+      <ion-card class="back-ground" *ngFor="let file of imageDataUrl; let i = index">
+        <ion-row style="padding: 12px;">
+          <ion-img alt="" src="assets/Tick.svg"
+            style="color: white; height: 30px; width: 30px;"></ion-img>
+          <ion-col>
+            <!-- Image{{" "+ (i + 1)}} -->
+             {{ file.name }}
+          </ion-col>
+          <ion-icon style="height: 40px; width: 40px;" name="trash-outline" (click)="deleteFiles(i)" ></ion-icon>
+        </ion-row>
+      </ion-card>
+
+      <img [src]="pdfBlob" alt="kdjdihv" />
+
+
+      <!-- <input  id="file-upload" type="file" (change)="onFileSelect($event, '', 'profileImage')" > -->
+
+
+     
+  <ion-button (click)="convertImageToPDF()">pdf</ion-button>
+
+  <div id="container">
+    <div id="iframeContainer" style="width: 600px;" ></div>
+   
+  </div>
+
+  <div *ngFor="let imag of imageDataUrl">
+    <ion-img src="{{imag}}" alt=""></ion-img>
+  </div>
+
+  <div *ngIf="view">
+    <ion-button (click)="openDocument()" fill="clear" class="view" >view document</ion-button>
+  </div>
+
+
+</ion-content>

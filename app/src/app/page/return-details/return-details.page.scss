@@ -1,0 +1,155 @@
+.span_style{
+    padding-right:12px
+}
+
+.red-circle {
+    width: 12px;
+    height: 12px;
+    background-color: red;
+    border-radius: 50%;
+   }
+   
+   .line_view {
+    width: 2px;
+    // height: 12px;
+    background-color: #ccc;
+   }
+   
+.circle-bar-container{
+    margin-right: 16rem;
+}
+  
+
+
+  
+//   .active{
+//       background-color:#ffa500;
+//   }
+
+.circles{
+    height: 1.3em;
+    width: 1.3em;
+    border: 0.3em solid #F4DADF;
+    background-color:#E82646;
+    border-radius: 50%;
+    display: block;
+    margin: auto;
+}
+
+.circle-desc-active{
+ font-weight: bold;
+}
+.bar{
+    width: 16%;
+    height: 6.00em;
+    margin-bottom:20em; // increased from 0.469em
+    border: 0.031em solid #F4DADF;
+    color:#F4DADF;
+    background-color:#F4DADF;
+    display: block;
+    margin: auto;
+}
+
+$circle-text-margin-top: -1em;
+
+.circle-text {
+    position: absolute;
+    left: 25%;
+    margin-top: $circle-text-margin-top;
+    font-weight: 600;
+}
+
+.container{
+    // min-width:320px;
+    margin: "0px auto";
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.circle-desc{
+   position: absolute;
+   top:5.000em;
+   font-size: 1.125em;
+   width: auto;
+   max-width:9.375em;
+   margin-left:-0.750em;
+}
+.tool_bar{
+    padding: 8px;padding-top: 18px;padding-bottom: 12px;
+}
+.content_st{
+    --padding-bottom: 20px;//common code put in common.css
+}
+
+.order_default_font{
+    font-size: 16px;
+}
+
+.arrow_icon{
+    color: white;margin-left: 8px;
+}
+
+.bt_sty{
+    display: flex;flex-direction: row;
+}
+
+.back_icon{ //common code put in common.css
+    width: 20px;height: 20px;
+}
+
+.light_font{
+    color: rgba(172,172,172,1);
+}
+
+.auto_size_bt{
+    width: -webkit-fill-available;justify-content: center;display: flex;
+}
+
+.view_bt_st{
+    --background-activated: none;
+    --background: rgba(245,123,32,1);width: -webkit-fill-available;  margin-left: 20%;margin-right: 20%;margin-top: 6%;
+}
+  
+//   @media only screen and (max-width: 320px){
+//      body {
+//        font-size:20%
+//     }
+//   } 
+  
+//   /*extra small devices*/
+//   @media only screen and (max-width: 600px){
+//      body {
+//        font-size:40%
+//     }
+//   } 
+  
+//   /* Small devices (portrait tablets and large phones, 600px and up) */
+//   @media only screen and (min-width: 600px) {
+//      body {
+//        font-size:60%
+//     }
+//   } 
+  
+//   /* Medium devices (landscape tablets, 768px and up) */
+//   @media only screen and (min-width: 768px) {
+//     body {
+//        font-size:80%
+//     }
+//   } 
+  
+//   /* Large devices (laptops/desktops, 992px and up) */
+//   @media only screen and (min-width: 992px) {
+//     body {
+//        font-size:100%
+//     }
+//   } 
+  
+//   /* Extra large devices (large laptops and desktops, 1200px and up) */
+//   @media only screen and (min-width: 1200px) {
+//      body {
+//        font-size:120%
+//     }
+//   }
+  

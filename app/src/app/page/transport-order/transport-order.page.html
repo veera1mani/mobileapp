@@ -1,0 +1,92 @@
+<ion-row>
+  <ion-card class="back_bg" (click)="backNav()">
+    <ion-icon class="back_icon" name="chevron-back-outline"></ion-icon>
+  </ion-card>
+  <ion-text class="toolbar_text">Order Status</ion-text>
+</ion-row>
+<br />
+<ion-content class="content_st">
+  <div class="order_status">
+    <ion-card class="status">       
+      <ion-row size="12">
+        <ion-col size="5">  
+          <ion-text class="cardcontent">Stokist Name</ion-text>
+        </ion-col>
+        <ion-col>
+          <ion-text class="cardcontent"
+            ><span class="span_style">:</span>{{orderDetails?.ticket.stockistName}}</ion-text>
+        </ion-col>
+      </ion-row>
+
+      <ion-row size="12">
+        <ion-col size="5">
+          <ion-text class="cardcontent">Location</ion-text >
+        </ion-col>
+        <ion-col>
+          <ion-text class="cardcontent"
+            ><span class="span_style">:</span>{{orderDetails?.ticket.location}}</ion-text >
+        </ion-col>
+      </ion-row>
+
+      <ion-row size="12">
+        <ion-col size="5">
+          <ion-text class="cardcontent">Status</ion-text >
+        </ion-col>
+        <ion-col>
+          <ion-text class="cardcontent"
+            ><span class="span_style">:</span>{{  invoice?.status }}</ion-text >
+        </ion-col>
+      </ion-row>
+
+      <!-- <ion-row size="12">
+        <ion-col size="5">
+          <ion-text class="cardcontent">Invoice No</ion-text>
+        </ion-col>
+        <ion-col style="display: flex; max-width: 10rem;">
+          <ion-text class="cardcontent" >
+           <span class="span_style">:</span>{{invoiceNo}}</ion-text >
+        </ion-col>
+      </ion-row> -->
+
+      <ion-row size="12">
+        <ion-col size="5">
+          <ion-text class="cardcontent">No.of Cases</ion-text>
+        </ion-col>
+        <ion-col>
+          <ion-text class="cardcontent"
+            ><span class="span_style">:</span>{{ invoice?.priority ? invoice?.numOfCases :  cases}}</ion-text>
+        </ion-col>
+      </ion-row>      
+    </ion-card>
+  </div>
+  <br />
+
+  <!-- <ion-card class="card_style">
+    <ion-row style="margin: 16px; margin-top: 45px; margin-left: 10%">
+      <div class="container">
+        <span *ngFor="let history of orderDetails?.history; let i = index">
+          <div class="circle-bar-container">
+            <span class="circles">
+              <img src="assets/Tick.svg" alt="">
+            </span>
+            <span class="circle-text" >
+              {{'Order '+history.status+' on '+ history.createdOn}}
+            </span>
+            <span class="bar" *ngIf="(i !== 7)"></span>           
+          </div>
+        </span>
+      </div>
+    </ion-row>
+
+    <div  >
+      <ion-checkbox class="delivered" labelPlacement="end"
+        >Order Deliverd Successfully</ion-checkbox>
+      
+    </div>
+    
+    
+  </ion-card> -->
+  <div class="card1" *ngIf=" invoice?.priority ? invoice?.status === 'DISPATCHED' :   invoice?.status === 'DISPATCHED'" >
+    <ion-button class="button" (click)="delivery()" >Submit</ion-button>
+  </div>
+</ion-content>

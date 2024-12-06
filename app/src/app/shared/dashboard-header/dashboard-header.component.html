@@ -1,0 +1,48 @@
+<div class="flex flex-row justify-between mt-2">
+  <div class="w-3/6 flex items-center ml-4">
+    <img src="assets/svg_healttone.svg" alt="" class="w-8 h-8 ml-1" />
+    <p class="text-gray-800 font-semibold ml-1 text-base title">HealthTraze</p>
+  </div>
+  <div class="flex items-center justify-end px-2 w-3/6 ml-auto h-8">
+    <ion-icon
+      src="assets/notification.svg"
+      class="mr-4 w-30 h-30 io"
+      (click)="openNotification()"
+    ></ion-icon>
+    <ion-icon
+      name="log-out-outline"
+      class="mr-4 w-30 h-30 cursor-pointer io"
+      (click)="openModel()"
+    ></ion-icon>
+  </div>
+</div>
+
+<!-- Custom Alert -->
+<div
+  *ngIf="logoutModel"
+  class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-1"
+  style="z-index: 1 !important; padding: 1rem"
+>
+  <div
+    class="bg-white p-6 rounded shadow-md w-96 relative"
+    style="border-radius: 12px"
+  >
+    <div class="colr-parent">
+      <div class="colr"></div>
+    </div>
+    <div>
+      <h3
+        class="l flex items-center justify-center border-b-2 border-gray-300 text-gray-800 font-semibold text-xl"
+      >
+        Logout
+      </h3>
+    </div>
+    <p class="de mt-2 mb-4">Are you sure Want to logout..?</p>
+    <div class="see">
+      <button (click)="closeModel()" class="close-button ee">Cancel</button>
+      <button (click)="logout()" class="close-button logout-btn">
+        Yes,Logout
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,99 @@
+<div>
+  <ion-row class="background padding_st">
+    <ion-card class="back_bg">
+      <ion-icon class="icon_size" name="chevron-back-outline" (click)="backNav()"></ion-icon>
+    </ion-card>
+    <ion-text class="toolbar_text">Orders</ion-text>
+  </ion-row>
+  <ion-row size="12" class="background top_searchbar" >
+    <ion-col>
+      <ion-searchbar
+       placeholder="Search invoice number"
+       class="search_bar" 
+       [debounce]="100"
+       (ionInput)="onSearch($event)">
+      </ion-searchbar>
+    </ion-col>
+    <div class="filter" >
+      <ion-icon name="options-outline" class="filter_size"  id="popover-order"></ion-icon>
+      <ion-popover mode="ios" trigger="popover-order" [dismissOnSelect]="true">
+        <ng-template>
+          <ion-content>
+            <ion-list>
+              <ion-item [button]="true" [detail]="false" (click)="queryService('INVOICE CREATED')">Invoiced Orders</ion-item>
+              <ion-item [button]="true" [detail]="false" (click)="queryService('PICKED')">Picked Order</ion-item>
+              <ion-item [button]="true" [detail]="false" (click)="queryService('CHECKED')">Checked Order</ion-item>
+              <ion-item [button]="true" [detail]="false" (click)="queryService('PACKED')">Packed Order</ion-item>
+            </ion-list>
+          </ion-content>
+        </ng-template>
+      </ion-popover>
+    </div>
+  </ion-row>
+  <ion-progress-bar *ngIf="!dataFetched" type="indeterminate"></ion-progress-bar>
+</div>
+<ion-content class="background full_view">
+
+  <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <ion-card *ngFor="let item of filteredOrderList" class="card_style">
+    <div class="flex_col">
+      <ion-row class="card_align">
+        <ion-text class="toolbar_text font_style" style="margin-left: 0px;"> {{'Invoice No : '+item?.invoiceNumber}} </ion-text>       
+      </ion-row>
+
+      <ion-row style="margin-top: 8px;">
+        <ion-col size="4.5" class="col_details">
+          <ion-text>Ticket Id</ion-text>
+          <ion-text>:</ion-text>
+        </ion-col>
+        <ion-col>
+          <ion-text>{{item?.ticketId}}</ion-text>
+        </ion-col>
+      </ion-row>
+      <ion-row style="margin-top: 8px;">
+        <ion-col size="4.5" class="col_details">
+          <ion-text>Customer ref no</ion-text>
+          <ion-text>:</ion-text>
+        </ion-col>
+        <ion-col>
+          <ion-text>{{item?.customerRefNumber}}</ion-text>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="4.5" class="col_details">
+          <ion-text>Customer name</ion-text>
+          <ion-text>:</ion-text>
+        </ion-col>
+        <ion-col>
+          <ion-text *ngIf="users?.roleName !== 'TRANSPORT'">{{item?.stockistName}}</ion-text>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="4.5" class="col_details">
+          <ion-text>Email date</ion-text>
+          <ion-text>:</ion-text>
+        </ion-col>
+        <ion-col>
+          <ion-text>{{item?.emailDate | date: 'dd-MM-yyyy'}}</ion-text>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="view_outlet"> 
+       
+          <div class="order_Style " [ngStyle]="{'background' : item?.status==='Delivered' ? '#CF142B' :item?.status==='Shipped'? '#52A811':'#afaf37'}">
+            <ion-text style="color: white;">{{item?.invoiceStatus}}</ion-text>
+          </div>
+        
+        
+        
+        <div class="order_Style button_bg" style="color: rgba(245,123,32,1);background: #FDE2CE;" >
+          <ion-text  class="view_det_color" (click)="ticketDetail(item?.ticketId , item?.invoiceNumber)" >View Details</ion-text>
+          <ion-icon name="chevron-forward-outline"  color="green"></ion-icon>
+        </div>
+      </ion-row>
+    </div>
+  </ion-card>
+</ion-content>

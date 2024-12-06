@@ -1,0 +1,124 @@
+<ion-row  class="background tool_bar">
+  <ion-card class="back_bg" (click)="backNav()">
+    <ion-icon class="back_icon" name="chevron-back-outline"></ion-icon>
+  </ion-card>
+  <ion-text class="toolbar_text">Ticket Details</ion-text>
+</ion-row>
+
+<ion-content class="content_st" >
+  <ion-card class="card_style" style="line-height: 34px;">
+    <ion-row size="12">
+      <ion-col size="6">
+        <ion-text class="toolbar_text order_default_font" >Ticket #</ion-text>
+      </ion-col>
+      <ion-col>
+        <ion-text class="light_font"><span class="span_style">:</span>{{ticketDetail?.ticket.ticketId}}</ion-text>
+      </ion-col>
+    </ion-row>  
+
+    <ion-row size="12">
+      <ion-col size="6">
+        <ion-text class="toolbar_text order_default_font" >Category</ion-text>
+      </ion-col>
+      <ion-col   style="display: flex; max-width: 9rem;">
+        <ion-text class="light_font"><span class="span_style">:</span>{{ticketDetail?.ticket.type}}</ion-text>
+      </ion-col>
+    </ion-row>
+
+    <ion-row size="12">
+      <ion-col size="6">
+        <ion-text class="toolbar_text order_default_font">Assigned To</ion-text>
+      </ion-col>
+      <ion-col  style="display: flex; max-width: 9rem;">
+        <ion-text class="light_font"><span class="span_style">:</span>{{ticketDetail?.ticket.userName}}</ion-text>
+      </ion-col>
+    </ion-row>
+
+    <ion-row size="12">
+      <ion-col size="6">
+        <ion-text class="toolbar_text order_default_font" >Stockist Name</ion-text>
+      </ion-col>
+      <ion-col style="display: flex; max-width: 9rem;">
+        <ion-text class="light_font"><span class="span_style">:</span>{{ticketDetail?.ticket.stockistName}}</ion-text>
+      </ion-col>
+    </ion-row>
+
+    <ion-row size="12">
+      <ion-col size="6">
+        <ion-text class="toolbar_text order_default_font" > Location</ion-text>
+      </ion-col>
+      <ion-col>
+        <ion-text class="light_font"><span class="span_style">:</span>{{ticketDetail?.ticket.location}}</ion-text>
+      </ion-col>
+    </ion-row>
+
+    <ion-row size="12">
+      <ion-col size="6">
+        <ion-text class="toolbar_text order_default_font" >Status</ion-text>
+      </ion-col>
+      <ion-col style="display: flex; max-width: 9rem;">
+        <ion-text class="light_font"><span class="span_style">:</span>{{ticketDetail?.ticket.status}}</ion-text>
+      </ion-col>
+    </ion-row>
+
+    <ion-row size="12">
+      <ion-col size="6">
+        <ion-text class="toolbar_text order_default_font">Email Date</ion-text>
+      </ion-col>
+      <ion-col  style="display: flex; max-width: 9rem;">
+        <ion-text class="light_font"><span class="span_style">:</span>{{ticketDetail?.ticket.createdOn | date: 'dd-MM-yyyy'}}</ion-text>
+      </ion-col>
+    </ion-row>
+
+    <ion-row size="12">
+      <ion-col size="6">
+        <ion-text class="toolbar_text order_default_font" >Email From</ion-text>
+      </ion-col>
+      <ion-col style="display: flex; max-width: 9rem;">
+        <ion-text class="light_font" ><span class="span_style">:</span>{{ticketDetail?.ticket.emailedBy}}</ion-text>
+      </ion-col>
+    </ion-row>
+
+    <ion-row size="12">
+      <ion-col size="6">
+        <ion-text class="toolbar_text order_default_font">Subject</ion-text>
+      </ion-col>
+      <ion-col>
+        <ion-text style="color: rgba(245,123,32,1);"><span class="span_style">:</span>{{ticketDetail?.ticket.subject}}</ion-text>
+      </ion-col>
+    </ion-row>
+
+    
+  </ion-card>
+
+ 
+  <ion-button (click)="viewStatus()" 
+    class="view_bt_st">Time Line
+    <ion-icon *ngIf="status" name="chevron-up-outline" class="arrow_icon" ></ion-icon>
+    <ion-icon *ngIf="!status" name="chevron-down-outline" class="arrow_icon" ></ion-icon>
+   </ion-button>
+
+  
+
+  <ion-card class="card_style" *ngIf="status">
+    <ion-row style="margin: 16px; margin-top: 45px; margin-left: 10%">
+      <div class="container">
+        <span *ngFor="let history of ticketDetail?.history; let i = index">
+          <div class="circle-bar-container">
+            <span class="circles"></span>
+            <span class="circle-text" >
+              {{'Ticket '+history.status+' on '+ history.createdOn}}
+            </span>
+            <span class="bar" *ngIf="(i !== 9)"></span>
+
+            
+          </div>
+        </span>
+      </div>
+    </ion-row>
+
+    
+    
+  </ion-card>
+
+</ion-content>

@@ -1,0 +1,74 @@
+<ion-content>
+  <div class="flex items-center p-4">
+    <img src="assets/svg_healttone.svg" alt="" class="mr-1">
+    <div>
+      <h3 class="text-gray-500 font-semibold text-lg lg:text-xl xl:text-2xl">
+        <span class="text-orange-500 underline font-bold text-lg lg:text-2xl xl:text-3xl">Healthtraze </span>
+        <span class="text-gray-400 font-light text-base lg:text-1.2rem xl:text-1.3rem">Solution Pvt Ltd.</span>
+      </h3>
+      <p class="text-gray-400 font-light text-base lg:text-lg xl:text-xl">
+        Evaluate. Efficient. Empower
+      </p>
+    </div>
+  </div>
+
+  
+
+
+  <div
+    class="mx-4   border-12 rounded-lg bg-white z-10 relative flex flex-col items-center justify-center box-shade tablet-card">
+    <img src="assets/Vectors-02.svg" alt="login" class="w-full h-auto ">
+    <div class="w-80 mx-auto mt-1">
+
+      <form class="flex flex-col p-4" [formGroup]="loginForm">
+
+        <div class="mb-4 relative">
+          <input type="text" id="email" placeholder="User ID"
+            class="border border-gray-300 pl-4 pb-4 pt-4 pr-12 w-full rounded-md" formControlName="username">
+          <span class="absolute right-0 top-1/2 transform -translate-y-1/2">
+            <img src="assets/icon/user.png" alt="" class="h-6 w-6 mr-4">
+          </span>
+        </div>
+
+        <!-- <p class="error-text mb-0 mt-1" style="color: red; margin-bottom: 8px; margin-top: -13px;"
+          *ngIf="submitFlag && loginForm.get('username')?.value === '' && (loginForm.get('username')?.dirty || loginForm.get('username')?.touched)">
+          Email address is required</p>
+          <p class="error-text mb-0 mt-1" style="color: red;  margin-bottom: 8px; margin-top: -13px;"
+           *ngIf="submitFlag && loginForm.get('username')?.errors?.['pattern']" >Enter valid email address</p> -->
+
+
+        <div class="mb-4 relative">
+          <input type="{{ passwordtext ? 'text' : 'password' }}" id="password" placeholder="Password"
+            class="border border-gray-300  pl-4 pb-4 pt-4 pr-12  w-full rounded-md" formControlName="password">
+          <span class="absolute right-0 top-1/2 transform -translate-y-1/2">
+            <ion-icon *ngIf="passwordtext" name="eye-outline" class="h-6 w-6 mr-4" (click)="pass()"></ion-icon>
+            <ion-icon *ngIf="!passwordtext" name="eye-off-outline" class="h-6 w-6 mr-4" (click)="pass()"></ion-icon>
+          </span>
+        </div>
+
+        <!-- <p class="error-text mb-0 mt-1" style="color: red; margin-bottom: 8px; margin-top: -13px;"
+           *ngIf="submitFlag && loginForm.get('password')?.value === '' && (loginForm.get('password')?.dirty || loginForm.get('password')?.touched)" >
+            Password is required
+          </p>   -->
+
+        <div class="my-4 flex items-center justify-center">
+          <button (click)="login()" type="submit"
+            class="bg-orange-500 text-white font-light  w-1/2 p-2 font-sans text-lg h-30 rounded-lg">
+            Login
+          </button>
+        </div>
+        <div class=" have_pin flex justify-around">
+          <button (click)="register()">register?</button>
+          <button (click)="enterPin()" type="submit" class="have_pin">
+            already have pin?
+          </button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+
+  <div
+    class="absolute bottom-0 w-full h-1/2 top-0 mt-auto bg-orange-500 border border-orange-500 rounded-tl-full rounded-tr-full z-0 p-4">
+  </div>
+</ion-content>

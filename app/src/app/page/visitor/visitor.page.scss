@@ -1,0 +1,58 @@
+.input{
+    width: -webkit-fill-available;
+    border: 2px solid #fad7d7;
+    border-radius: 8px;
+    padding-left: 5px;
+    margin-left: 10px ;
+    margin-right: 10px;
+    --tw-ring-color: orange !important;
+}
+
+.butn{
+    --background: rgba(245,123,32,1);
+}
+
+.butn1{
+    --background: #ffffff;
+    color: #000000;
+    --border-color: 1px  solid rgba(245,123,32,1) !important;
+}
+
+ion-input{
+    --tw-ring-color: #ffffff!important;
+}
+
+.card{
+    margin: 15px;
+    padding: 5px;
+    line-height: 34px; 
+    border-radius: 20px;
+    // background: rgba(245,123,32,1);
+}
+.back{
+    --background: linear-gradient(to right, #f6d365 0%, #fda085 51%, #f99b0d 100%);
+}
+
+.background{
+    background: linear-gradient(to right, #f6d365 0%, #fda085 51%, #f99b0d 100%);
+}
+
+
+.image{
+    padding-left: 10%;
+}
+
+.circular-image {
+    width: 100px; 
+    height: 100px;
+    border-radius: 50% !important;
+    object-fit: cover; 
+    border: 1px solid rgba(245,123,32,1) ;
+}
+
+.ok-btn{    
+  display: flex;
+  justify-content: center;
+  align-items: center;
+//   height: 100%;
+}

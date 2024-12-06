@@ -1,0 +1,263 @@
+
+<ion-row  class="background tool_bar">
+  <ion-card class="back_bg" (click)="backNav()">
+    <ion-icon class="back_icon" name="chevron-back-outline"></ion-icon>
+  </ion-card>
+  <ion-text class="toolbar_text">Orders Details</ion-text>
+</ion-row>
+
+<ion-content class="content_st" >
+  <ion-card class="card_style" style="line-height: 34px;">
+
+
+
+    <ion-grid  style="margin-bottom: -25px; ">
+      <ion-row size="12" style="margin-top: 10px;">
+        <ion-col size="6">
+          <ion-text class="toolbar_text_order_default_font">Ticket # :</ion-text>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12">
+          <input    class="input " value="{{orderDetails?.ticketId}}" readonly >       
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-grid  style="margin-bottom: -25px; ">
+      <ion-row size="12" style="margin-top: 10px;">
+        <ion-col size="6">
+          <ion-text class="toolbar_text_order_default_font">Category :</ion-text>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12">
+          <input    class="input " value="{{orderDetails?.type}}" readonly >       
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    
+
+    <ion-grid  style="margin-bottom: -25px; ">
+      <ion-row size="12" style="margin-top: 10px;">
+        <ion-col size="6">
+          <ion-text class="toolbar_text_order_default_font">Assigned To :</ion-text>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12">
+          <input    class="input " value="{{orderDetails?.userName}}" readonly >       
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    
+    <ion-grid  style="margin-bottom: -25px; ">
+      <ion-row size="12" style="margin-top: 10px;">
+        <ion-col size="6">
+          <ion-text class="toolbar_text_order_default_font">Customer Name :</ion-text>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12">
+          <input    class="input " value="{{orderDetails?.stockistName}}" readonly >       
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-grid  style="margin-bottom: -25px; ">
+      <ion-row size="12" style="margin-top: 10px;">
+        <ion-col size="6">
+          <ion-text class="toolbar_text_order_default_font">Customer Location :</ion-text>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12">
+          <input    class="input " value="{{orderDetails?.location}}" readonly >       
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-grid  style="margin-bottom: -25px; ">
+      <ion-row size="12" style="margin-top: 10px;">
+        <ion-col size="6">
+          <ion-text class="toolbar_text_order_default_font">Status :</ion-text>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12">
+          <input    class="input"   readonly value="{{ invoiceDetails?.status}}">           
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <!-- <ion-row size="12">
+      <ion-col size="6">
+        <ion-text class="toolbar_text order_default_font" >Status</ion-text>
+      </ion-col>
+      <ion-col style="display:flex; flex-wrap: wrap;">
+        <ion-text class="light_font" ><span class="span_style">:</span>{{orderDetails?.status === 'INVOICE CREATED'?invoiceDetails?.status:orderDetails?.status}}</ion-text>
+        <ion-text class="light_font" *ngIf="orderDetails?.status === 'PACKED'||orderDetails?.status === 'DISPATCHED'||orderDetails?.status === 'DELIVERED'"><span class="span_style">:</span>{{}}</ion-text>        
+      </ion-col>
+    </ion-row> -->
+
+    <ion-grid  style="margin-bottom: -25px; ">
+      <ion-row size="12" style="margin-top: 10px;">
+        <ion-col size="6">
+          <ion-text class="toolbar_text_order_default_font">Invoice Number :</ion-text>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12">
+          <input class="input textField" value="{{ receivedstatus === 'INVOICE CREATED' || receivedstatus === 'PACKED'  ?  mergedInvoice : invoiceDetails?.invoiceNumber}}"  readonly >           
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+
+    <ion-grid  >
+      <ion-row size="12" style="margin-top: 10px;">
+        <ion-col size="6">
+          <ion-text class="toolbar_text_order_default_font">No of Line Items :</ion-text>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12">
+          <input    class="input " value="{{invoiceDetails?.lineItem}}"  readonly >           
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+
+  
+   
+   
+  <div  *ngIf=" receivedstatus === 'CHECKED'">
+   <form [formGroup]="packedStatus"> 
+
+    <ion-grid >
+      <ion-row size="12" style="margin-top: 10px;">
+        <ion-col size="6">
+          <ion-text class="toolbar_text_order_default_font">No of Cases :</ion-text>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12">
+          <input  type="number" formControlName="numOfCases"  class="text_field" class="input" >   
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  
+
+    <div *ngIf="submitFlag && packedStatus.controls['numOfCases'].errors" >
+      <p class="error-text mb-0 mt-1" style="color: red; margin-bottom: 8px; margin-top: -3%;margin-left: 7%;"
+           *ngIf="submitFlag && packedStatus.controls['numOfCases'].errors['required']">
+            This field is required
+    </p> 
+    </div>
+  </form>
+
+    <div>
+      <ion-item>
+        <ion-label>priority</ion-label>
+        <ion-toggle mode="ios" (ionChange)="onToggleChange($event)" ></ion-toggle>
+      </ion-item>
+    </div>
+  </div>
+  
+  <div *ngIf=" receivedstatus === 'PACKED' || receivedstatus === 'TRANSPORTER ASSIGNED'">
+     
+   <form [formGroup]="transport">
+
+    <ion-grid  style="margin-bottom: -25px; ">
+      <ion-row size="12" style="margin-top: 10px;">
+        <ion-col size="6">
+          <ion-text class="toolbar_text_order_default_font">Transporter :</ion-text>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12">
+          <ion-select           
+           class="select"
+           class="input"  
+           interface="popover"
+           placeholder="Select Transporter"
+           (ionChange)="transportSelect($event)"  
+           formControlName="transporter"
+           label-placement="stacked"
+           > 
+         <ion-select-option *ngFor="let transport of transporter?.transport" value={{transport.transportId}} >{{transport.transportName}}</ion-select-option>          
+         </ion-select>    
+        </ion-col>
+      </ion-row>
+    </ion-grid>  
+
+  <div *ngIf="dispatchButton && transport.controls['transporter'].errors" >
+    <p class="error-text mb-0 mt-1" style="color: red;  margin-top: 15px;margin-left: 7%;"
+         *ngIf="dispatchButton && transport.controls['transporter'].errors['required']">
+          This field is required
+  </p> 
+  </div>
+
+  <ion-grid  >
+    <ion-row size="12" style="margin-top: 10px;">
+      <ion-col size="6">
+        <ion-text class="toolbar_text_order_default_font">Vehicle No :</ion-text>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12">
+        <input  formControlName="vehicaleNo"   type="text"  class="text_field" class="input" >         
+      </ion-col>
+    </ion-row>
+  </ion-grid>  
+
+  <div *ngIf="dispatchButton && transport.controls['vehicaleNo'].errors" >
+    <p class="error-text mb-0 mt-1" style="color: red; margin-bottom: 8px; margin-top: -3%;margin-left: 7%;"
+         *ngIf="dispatchButton && transport.controls['vehicaleNo'].errors?.['required']">
+          This field is required
+    </p> 
+  </div>
+
+     </form>  
+  </div>  
+</ion-card>
+
+<!-- wms === false && -->
+  <div  *ngIf=" wms === false &&   receivedstatus === 'INVOICE CREATED'">
+    <ion-button  class="view_bt_st"  type="submit" (click)="updateInv('PICKED')" >PICK</ion-button>    
+  </div>
+
+  <div *ngIf="wms && receivedstatus === 'INVOICE CREATED'">
+    <ion-button   class="inv_details" (click)="viewInvoice()" >
+      invoice details 
+    <ion-icon name="arrow-forward-outline"  class="arrow_icon"></ion-icon>
+    </ion-button>
+  </div>
+  
+  <div  *ngIf=" wms === false &&  receivedstatus === 'PICKED' && ticketStatus === 'INVOICE CREATED'" >
+    <ion-button   class="view_bt_st" type="submit" (click)="updateInv('CHECKED')" >CHECK</ion-button>
+  </div>
+
+  <div *ngIf="wms && receivedstatus === 'PICKED' && ticketStatus === 'INVOICE CREATED'">
+    <ion-button   class="inv_details" (click)="checkList()" >
+      check Invoice
+    <ion-icon name="arrow-forward-outline"  class="arrow_icon"></ion-icon>
+    </ion-button>
+  </div>
+  
+  <div  *ngIf="ticketStatus === 'INVOICE CREATED' && receivedstatus === 'CHECKED'" >
+    <ion-button  class="view_bt_st"  type="submit" (click)="packed('PACKED')" >PACK</ion-button>
+  </div>
+  
+  <div   *ngIf="receivedstatus === 'PACKED' || receivedstatus === 'TRANSPORTER ASSIGNED' " >
+    <ion-button  class="view_bt_st" type="submit" (click)="dispatched('DISPATCHED')" >DISPATCH</ion-button>
+  </div>
+
+  
+
+</ion-content>
+   
+    
+    
+

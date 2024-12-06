@@ -1,0 +1,145 @@
+<ion-row  class="background tool_bar">
+  <ion-card class="back_bg" (click)="backNav()">
+    <ion-icon class="back_icon" name="chevron-back-outline"></ion-icon>
+  </ion-card>
+  <ion-text class="toolbar_text">Return Details</ion-text>
+</ion-row>
+
+<ion-content class="content_st">
+  <ion-card class="card_style" style="line-height: 34px;">
+    <ion-row size="12">
+      <ion-col size="6">
+        <ion-text class="toolbar_text order_default_font" >Serial Number</ion-text>
+      </ion-col>
+      <ion-col>
+        <ion-text class="light_font"><span class="span_style">:</span>{{returnDetail?.returnData.serialNumber}}</ion-text>
+      </ion-col>
+    </ion-row>  
+
+    <ion-row size="12">
+      <ion-col size="6">
+        <ion-text class="toolbar_text order_default_font" >Stockist</ion-text>
+      </ion-col>
+      <ion-col>
+        <ion-text class="light_font"><span class="span_style">:</span>{{returnDetail?.returnData.stockistId}}</ion-text>
+      </ion-col>
+    </ion-row>
+
+    <ion-row size="12">
+      <ion-col size="6">
+        <ion-text class="toolbar_text order_default_font" >Claim Number</ion-text>
+      </ion-col>
+      <ion-col>
+        <ion-text class="light_font"><span class="span_style">:</span>{{returnDetail?.returnData.claimNumber}}</ion-text>
+      </ion-col>
+    </ion-row>
+
+    <ion-row size="12">
+      <ion-col size="6">
+        <ion-text class="toolbar_text order_default_font">LR Booking Date</ion-text>
+      </ion-col>
+      <ion-col>
+        <ion-text class="light_font"><span class="span_style">:</span>{{returnDetail?.returnData.lrBookingDate | date: 'dd-MM-yyyy'}}</ion-text>
+      </ion-col>
+    </ion-row>
+
+    <ion-row size="12">
+      <ion-col size="6">
+        <ion-text class="toolbar_text order_default_font" >Transporter</ion-text>
+      </ion-col>
+      <ion-col>
+        <ion-text class="light_font"><span class="span_style">:</span>{{returnDetail?.returnData.transporterId}}</ion-text>
+      </ion-col>
+    </ion-row>  
+
+    <ion-row size="12">
+      <ion-col size="6">
+        <ion-text class="toolbar_text order_default_font" >LR No</ion-text>
+      </ion-col>
+      <ion-col>
+        <ion-text class="light_font"><span class="span_style">:</span>{{returnDetail?.returnData.lrNumber}}</ion-text>
+      </ion-col>
+    </ion-row>
+
+    <ion-row size="12">
+      <ion-col size="6">
+        <ion-text class="toolbar_text order_default_font">Received Date</ion-text>
+      </ion-col>
+      <ion-col>
+        <ion-text class="light_font"><span class="span_style">:</span>{{returnDetail?.returnData.receivedDate | date: 'dd-MM-yyyy'}}</ion-text>
+      </ion-col>
+    </ion-row>
+
+    <ion-row size="12">
+      <ion-col size="6">
+        <ion-text class="toolbar_text order_default_font" >Claim Type</ion-text>
+      </ion-col>
+      <ion-col>
+        <ion-text class="light_font"><span class="span_style">:</span>{{returnDetail?.returnData.claimType}}</ion-text>
+      </ion-col>
+    </ion-row>
+
+    <ion-row size="12">
+      <ion-col size="6">
+        <ion-text class="toolbar_text order_default_font">No of Boxes</ion-text>
+      </ion-col>
+      <ion-col>
+        <ion-text style="color: rgba(245,123,32,1);"><span class="span_style">:</span>{{returnDetail?.returnData.numberOfBoxes
+        }}</ion-text>
+      </ion-col>
+    </ion-row>
+    <ion-row size="12">
+      <ion-col size="6">
+        <ion-text class="toolbar_text order_default_font">No of Line items</ion-text>
+      </ion-col>
+      <ion-col>
+        <ion-text style="color: rgba(245,123,32,1);"><span class="span_style">:</span>{{returnDetail?.returnData.numberOfLineItems}}</ion-text>
+      </ion-col>
+    </ion-row>
+    
+  </ion-card>
+
+  <!-- <ion-button 
+    class="view_bt_st" >Done</ion-button> -->
+  <ion-button (click)="viewStatus()" 
+    class="view_bt_st">Time Line
+    <ion-icon *ngIf="status" name="chevron-up-outline" class="arrow_icon" ></ion-icon>
+    <ion-icon *ngIf="!status" name="chevron-down-outline" class="arrow_icon" ></ion-icon>
+   </ion-button>
+
+  <!-- <ion-card class="card_style" *ngIf="status">
+    <ion-row style="margin: 16px;margin-top: 45px;margin-left: 15%;">
+      <div class="container">
+        <span *ngFor="let item of counts; let i = index">
+          <div class="circle-bar-container">
+            <span class="circles"></span>
+            <span class="circle-text" *ngIf="item !== 'Deliverd'">{{item === 'Email Received on '?('Email Received on
+              '+'02 Nov 2023 12:43 PM'):item}}</span>
+            <ion-icon class="circle-text" *ngIf="item === 'Deliverd'" style="width: 24px;height: 24px;"
+              name="logo-dropbox"></ion-icon>
+            <span class="bar" *ngIf="(i !== counts.length-1)"></span>
+          </div>
+        </span>
+      </div>
+    </ion-row>
+  </ion-card> -->
+
+  <ion-card class="card_style" *ngIf="status">
+    <ion-row style="margin: 16px; margin-top: 45px; margin-left: 10%">
+      <div class="container">
+        <span *ngFor="let history of returnDetail?.history; let i = index">
+          <div class="circle-bar-container">
+            <span class="circles"></span>
+            <span class="circle-text" >
+              {{'Order '+history.status+' on '+ history.historyOn}}
+            </span>
+            <span class="bar" *ngIf="(i !== 6)"></span>
+
+            
+          </div>
+        </span>
+      </div>
+    </ion-row>    
+  </ion-card>
+
+</ion-content>

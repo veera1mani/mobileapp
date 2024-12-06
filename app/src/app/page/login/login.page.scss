@@ -1,0 +1,12 @@
+.box-shade{
+    filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.1));
+}
+.have_pin{
+    color: rgb(13, 157, 247);
+}
+
+@media (min-width: 768px) {
+    .tablet-card {
+      margin-top: 10%;
+    }
+}

@@ -1,0 +1,54 @@
+<ion-content fullscreen="true" scrollY="true">
+    <div>
+        <div class="flex items-center justify-center mt-4"><img src="assets/back arrow.svg" alt=""
+                class="w-8 h-8 ml-4 mt-4 absolute left-0" (click)="RouteToLogin()">
+            <h3 class="text-center ml-2 mt-4 text-gray-800 font-semibold text-lg font-system tet">Set Up
+                PIN</h3>
+        </div>
+        <div class="relative w-80 mx-auto mt-6" style="margin-top: 1rem;"><img src="assets/Vectors-01.svg"
+                alt="Your Image" class="w-full h-full object-cover rounded-lg">
+            <div class="absolute inset-0  from-gray-300 to-transparent rounded-lg"></div>
+        </div>
+        <div class="w-4/5 mx-auto mt-4">
+            <h3 class="text-black w-4/5 mx-auto text-1.5xl font-semibold font-sans flex justify-center" style="font-size: 1.5rem;"> Create your Pin Code </h3>
+            <p class="text-black w-60 mx-auto flex justify-between" style="margin-top: .5rem;color: gray;"> Enter a new 4-digit PIN to Login to this device </p>
+        </div>
+        <div class="mt-4" style="margin-left: 1rem; margin-right: 1rem;">
+            
+            
+            
+            <div style="display: flex;justify-content: center;">
+              <ion-text class="create_text">Create Pin</ion-text>  
+            </div>
+            <div class="pl-16 pr-16 pt-4 pb-4">
+                <code-input [isCodeHidden]="false"
+                            [codeLength]="4"
+                            (codeCompleted)="onCodeCompleted($event)"                            
+                            > 
+                </code-input>
+            </div>
+           
+           <div>
+            <ion-text></ion-text>
+           </div>
+            <div style="display: flex;justify-content: center;">
+              <ion-text class="create_text">Confirm Pin</ion-text>  
+            </div>
+            <div class="pl-16 pr-16 pt-4 pb-4">
+                <code-input [isCodeHidden]="false"
+                            [codeLength]="4"
+                            (codeChanged)="onCodeChange($event)"
+                            (codeCompleted)="onCodeComplete($event)"
+                            >
+                </code-input>
+            </div>
+            <div *ngIf="secondField">
+             <ion-text style="display: flex;justify-content: center;color: red;font-size: 16px;">*confirm pin not matched</ion-text>             
+            </div>
+
+            <div style="margin-left: 7rem; margin-top: 10%; margin-right: 7rem;">
+              <button class="w-full bg-orange-500 text-white py-2 px-4 mb-12  rounded-lg" (click)="GoToHomeModule()">Create</button>
+            </div>           
+        </div>
+    </div>
+</ion-content>

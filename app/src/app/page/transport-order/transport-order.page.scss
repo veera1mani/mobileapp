@@ -1,0 +1,118 @@
+.back_icon {
+  //common code put in common.css
+  width: 20px;
+  height: 20px;
+}
+
+.toolbar_text {
+  white-space: nowrap;
+  text-align: left;
+  // font-family: Rubik;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  align-items: end;
+  display: flex;
+  margin-left: 16px;
+}
+.circle-bar-container {
+  margin-right: 16rem;
+}
+
+.content_st {
+  --padding-bottom: 20px; //common code put in common.css
+}
+
+.order_status {
+  margin: 16px;
+  padding: 3px;
+  line-height: 22px;
+  border-radius: 14px;
+  filter: drop-shadow(0px 12px 12px rgba(0, 0, 0, 0.1));
+}
+
+.status {
+  padding: 8px;
+  letter-spacing: 1px;
+  font-size: medium;
+  line-height: 34px;
+  background: rgba(245, 123, 32, 1);
+}
+
+.cardcontent {
+  color: rgb(249, 245, 242);
+  font-weight: 600;
+}
+
+// .light_font{
+//     color: rgb(249, 245, 242);
+// }
+
+.span_style {
+  padding-right: 12px;
+}
+
+.card_style {
+  margin: 16px;
+  padding: 16px;
+  line-height: 22px;
+  border-radius: 14px;
+  padding-bottom: 45px !important;
+  filter: drop-shadow(0px 12px 12px rgba(0, 0, 0, 0.1));
+}
+
+.container {
+  // min-width:320px;
+  margin: "0px auto";
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.circles {
+  height: 1.5em;
+  width: 1.5em;
+  // border: 0.3em solid #f4dadf;
+  // background-color: #e82646;
+  // border-radius: 50%;
+  display: block;
+  margin: auto;
+}
+
+$circle-text-margin-top: -20px;
+.circle-text {
+  position: absolute;
+  left: 50px;
+  margin-top: $circle-text-margin-top;
+  font-weight: 600;
+}
+
+.bar {
+  width: 16%;
+  height: 6em;
+  margin-bottom: 20em; // increased from 0.469em
+  border: 0.031em solid #f4dadf;
+  color: #f4dadf;
+  background-color: #f4dadf;
+  display: block;
+  margin: auto;
+}
+
+.delivered {
+  padding: 10%;
+  padding-bottom: 5%;
+}
+
+.card1 {
+  display: flex;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 35px;
+}
+
+.button {
+  color: rgb(249, 245, 242);
+  --background: rgba(245, 123, 32, 1);
+}

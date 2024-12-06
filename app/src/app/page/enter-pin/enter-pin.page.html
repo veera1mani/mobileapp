@@ -1,0 +1,42 @@
+ 
+<ion-content [fullscreen]="true">
+  <div class="title_text" >
+    <ion-text class="title" ></ion-text>
+  </div> 
+  
+
+  
+
+ <div class="pin">
+  <ion-text class="stext">Enter 4 Digit Pin Number</ion-text>
+  <ion-text class="ptext">To Confirm Your Account, Please enter your</ion-text>
+  <ion-text class="mtext">4-digit Secret Code</ion-text>
+  
+  <div class="pl-16 pr-16 pt-12 pb-4">
+  <code-input [isCodeHidden]="false"
+              [codeLength]="4"
+              (codeChanged)="onCodeChanged($event)"
+              (codeCompleted)="onCodeCompleted($event)">
+  </code-input>
+  </div>
+
+  <ion-button (click)="pin()" class="view_bt_st">LOGIN</ion-button>
+  <button (click)="Login()" type="submit" class="have_pin">
+    Don't have pin?
+    <span style="color: rgb(22, 144, 243);">
+      Create Now
+    </span>
+  </button>
+ </div>
+
+
+  <!-- <div class="or-container">
+    <div class="line"></div>
+    <div class="or-text">Or</div>
+    <div class="line"></div>
+  </div>
+  <div class="img" >
+    <ion-img src="assets/scanner.jpg"  class="image"></ion-img>  
+  </div>
+    <ion-button (click)="submit()" fill="clear" class="scan">Scan with Qr</ion-button> -->
+</ion-content>

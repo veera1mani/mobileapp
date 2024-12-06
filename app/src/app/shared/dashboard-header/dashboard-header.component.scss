@@ -1,0 +1,43 @@
+.io {
+    width: 30px !important;
+    height: 30px !important;
+  }
+  .logout-btn {
+    border: orange;
+    border-radius: orange 2px solid;
+    padding: 0.5rem;
+    border: 2px solid orange;
+    border-radius: 6px;
+    width: max-content;
+    line-height: 1;
+    height: 37px !important;
+    background: orange;
+    color: white;
+    flex: 0 0 50%;
+  }
+  .ee {
+    border: orange;
+    border-radius: orange 2px solid;
+    padding: 0.5rem;
+    border: 2px solid orange;
+    border-radius: 6px;
+    width: max-content;
+    line-height: 1;
+    height: 37px !important;
+    color: orange;
+    flex: 0 0 50%;
+  }
+  .see {
+    height: 20%;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    top: 15px;
+    column-gap: 10px;
+  }
+  .de {
+    color: gray;
+    /* margin: auto; */
+    /* width: 80%; */
+    text-align: center;
+  }
