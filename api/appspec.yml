@@ -1,0 +1,9 @@
+version: 0.0
+Resources:
+  - TargetService:
+      Type: AWS::ECS::Service
+      Properties:
+        TaskDefinition: "arn:aws:ecs:ap-south-1:029266897495:task-definition/prod-api-task:2"
+        LoadBalancerInfo:
+          ContainerName: "etraze-api"
+          ContainerPort: 8080

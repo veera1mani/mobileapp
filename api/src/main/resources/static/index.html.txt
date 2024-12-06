@@ -1,0 +1,9 @@
+<!doctype html>
+<html>
+<head>
+<title>etraze api is running successfully!</title>
+</head>
+<body>
+<p>etraze api <strong> is running</strong> successfully <strong>!</strong>.</p>
+</body>
+</html>
